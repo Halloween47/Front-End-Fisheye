@@ -1,37 +1,44 @@
 export class PhotographerModel {
   async getListePhotographers() {
-    const listePhotographers = await fetch('data/photographers.json');
+    const listePhotographers = await fetch("data/photographers.json");
     const listePhotographersJson = await listePhotographers.json();
-
+    // console.log(listePhotographersJson.photographers)
     return listePhotographersJson.photographers;
   }
-
+  
+  async getListeMedias() {
+    const listeMedias = await fetch("data/photographers.json");
+    const listeMediasJson = await listeMedias.json();
+    // console.log(listePhotographersJson.photographers)
+    return listeMediasJson.media;
+  }
+  
   async getInfosPhotographer(idPhotographer) {
     const listePhotographers = await fetch('data/photographers.json');
     const listePhotographersJson = await listePhotographers.json();
     const photographers = listePhotographersJson.photographers;
-
-    photographers
-      .find(photographer => {
-        return photographer.id == idPhotographer
-      })
-      .map(async photographer => {
-
-        const listePhotographers = await fetch('data/photographers.json');
-        const listePhotographersJson = await listePhotographers.json();
-        const mediaPhotographer = listePhotographersJson.media;
     
-        let mediaAAjouter = mediaPhotographer
-          .forEach(media => {
-            return media.photographerId == photographer.id
-          });
+    let name = photographers.find(function(photographer) {
+      return photographer.name === idPhotographer;
+    })
     
-        return JSON.stringify(
-          {
-            "photographer": photographer,
-            "media": mediaAAjouter
-          }
-        );
-      });
+    let photographerID = photographers.find(function(photographer) {
+      return photographer.id === idPhotographer;
+    })
+    return photographerID;   
+  }
+  
+  async getMediasPhotographer(idPhotographer) {
+    const listePhotographers = await fetch('data/photographers.json');
+    const listePhotographersJson = await listePhotographers.json();
+    const medias = listePhotographersJson.media;
+    
+    let listeMediaPhotographer = medias.filter( 
+      media => media.photographerId === idPhotographer
+    )
+    return listeMediaPhotographer;
+    
+    
+    
   }
 }

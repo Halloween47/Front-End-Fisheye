@@ -3,25 +3,29 @@
 //   const photographers = await response.json();
 //   return photographers;
 // }
-import { PhotographerModel } from "../models/photographerModel";
 
+// Je récupére mon modèle
+import { PhotographerModel } from "../models/photographerModel.js";
+
+// Fonction de " Récupération de la liste JSON "photographers" "
 async function getPhotographers() {
-
+  
   // Insérer les données JSON dans le tableau (& affichage)
   const response = await fetch("data/photographers.json");
   const photographers = await response.json();
-
+  
   // Vérification du nouveau contenu du tableau
-  console.log(photographers);
-
+  // console.log(photographers);
+  
   // et bien retourner le tableau photographers seulement une fois récupéré
   return photographers;
-
+  
 }
 
+// Fonction "Affichage sur écran des données correspondant"
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
-
+  
   photographers.forEach((photographer) => {
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
@@ -29,17 +33,31 @@ async function displayData(photographers) {
   });
 };
 
+// Exemple pour une application de "JSON.stringify()"
+// const obj = { name: "John", age: 30, city: "New York" };
+// const jsonString = JSON.stringify(obj);
+// console.log(obj);
+// console.log(jsonString);
 
-let photographerModel = new PhotographerModel()
-let toto = photographerModel.getListePhotographers();
+// TEST* pour le fonctionnement de "Models"
+async function test() {
+  let photographerModel = new PhotographerModel();
+  let testGetList = await photographerModel.getListePhotographers();
 
-console.log(JSON.stringify(toto));
+  // Renvoie une chaine de caractères du fichier JSON
+  // console.log(JSON.stringify(testGetList));
 
+  // Renvoie le contenu du fichier JSON
+  console.log(testGetList);
+}
 
+// Fonction d'initialisation
 async function init() {
   // Récupère les datas des photographes
   const { photographers } = await getPhotographers();
+  // Affiche les données
   displayData(photographers);
+  test();
 };
 
 init();
