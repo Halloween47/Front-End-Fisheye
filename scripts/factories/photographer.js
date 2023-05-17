@@ -5,7 +5,6 @@ function photographerFactory(data) {
     const alternate = `${name}`;
     const ariaLabel = `${tagline}`;
     const photographer = `photographer.html?id=${id}name=${name}`;
-    // const photographer = `photographer.html`;
     
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -68,7 +67,7 @@ function photographerFactory(data) {
         
         const ptagline = document.createElement( 'p' );
         ptagline.textContent = tagline;
-                
+        
         article.appendChild(link);
         // link.appendChild(img);
         link.appendChild(h2);
@@ -77,8 +76,8 @@ function photographerFactory(data) {
         
         return (article);
     }
-
+    
     return { name, picture, city, tagline, price, getUserCardDOM, getPhotographersCardDOM }
-
+    
 }
 
