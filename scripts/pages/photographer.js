@@ -29,6 +29,8 @@ async function displayData(photographers) {
   const section = photographersSection.appendChild(photographersCardDOM);
   photographersSection.insertBefore(section, firstChild);
   
+  const photographerPrice = document.querySelector(".photograph-price");
+  photographerPrice.textContent = photographers.price + ' / jour';
   
 };
 async function displayDataMedias(medias) {

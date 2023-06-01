@@ -1,12 +1,144 @@
-#contact_modal {
-    display: none;
-}
+body { position: relative;}
+h1 { margin: 0; padding: 0;}
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    padding: 60px 0px;
     display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.photograph-header h1 {
+    font-size: 3em;
+    color: #D3573C;
+    
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 83px;
+}
+
+.photograph-header p:nth-child(2) {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+    
+    color: #901C1C;
+}
+
+.photograph-header p:nth-child(3) {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23px;
+    
+    color: #525252;
+}
+
+.rounded-img {
+    width: 300px; height: 300px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.rounded-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.photograph-filter {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    
+    color: #000000;
+    
+    margin: 50px 100px;
+}
+
+.photograph-filter select {
+    background: #911C1C;
+    border-radius: 5px 5px 0px 0px;
+    color: #FFFFFF;
+    
+    margin-left: 10px;
+    padding: 20px 60px 20px 20px;
+    
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 23px;
+    
+    
+}
+
+.photograph-filter option {
+    background-color: black;
+    
+    border-bottom-color: #fff;
+}
+
+.photograph-media {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px 100px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* gap: 25px; */
+    /* background-color: orange; */
+}
+
+.photograph-media article {
+    width: 400px;
+    height: auto;
+    /* background-color: red; */
+    padding: 10px 0px;
+}
+
+.container-img {
+    width: 100%;
+    height: 400px;
+    /* background-color: violet; */
+}
+
+.photograph-media img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photograph-price {
+    background-color: #DB8876;
+    width: 376px; height: 49px;
+    position: fixed;
+    right: 36px; 
+    bottom: 0px;
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: center;
+    
+    color: #000000;
 }
 
 .contact_button {
@@ -22,16 +154,38 @@
     cursor: pointer;
 }
 
+#contact_modal {
+    display: none;
+    
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100vh;
+    
+    
+    
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 30vw;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+    padding: 25px;
+    margin: 10px;
+    
 }
 
 .modal header {
@@ -43,10 +197,11 @@
     cursor: pointer;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal header h1 {
+    /* font-size: 64px; */
     font-weight: normal;
-    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 form {
@@ -58,7 +213,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 26px;
 }
 
 form div {
@@ -69,9 +224,21 @@ form div {
     margin-bottom: 26px;
 }
 
-form input {
+form input, textarea {
     width: 100%;
-    height: 68px;
+    height: 58px;
     border: none;
     border-radius: 5px;
 }
+
+form input:focus {
+    outline: 3px solid red;
+  }
+  
+
+#form_submit {
+    /* width: auto; */
+    height: 100%;
+    padding: 10px;
+}
+
