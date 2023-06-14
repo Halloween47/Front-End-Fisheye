@@ -1,3 +1,4 @@
+// Factory pour les données " PHOTOGRAPHES "
 function photographerFactory(data) {
     const { name, portrait, city, tagline, price, id, country } = data;
     
@@ -5,9 +6,9 @@ function photographerFactory(data) {
     const alternate = `${name}`;
     const ariaLabel = `${tagline}`;
     const photographer = `photographer.html?id=${id}name=${alternate}`;
-    const comeFrom = `${country}`;
     const cityName = `${city}` + ',' ;
     
+    // Gestion de la page " index "
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         
@@ -45,22 +46,15 @@ function photographerFactory(data) {
         
         return (article);
     }
+
+    // Gestion de la page " Photographes "
     function getPhotographersCardDOM() {
         const article = document.createElement( 'article' );
         const headerPhoto = document.querySelector('.photograph-header');
-        
-        // const link = document.createElement( 'a' );
-        // link.setAttribute("href", photographer);
-        // link.setAttribute("class", "focus");
-        // // Création d'un lien entre index.html et la page "photographes"
-        // link.addEventListener("click", () => {
-        //     console.log(data);
-        // })
 
         const roundedImg = document.createElement('div');
         roundedImg.setAttribute('class', 'rounded-img');
         
-        const photographerImg = document.querySelector('.photographer-header');
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.setAttribute("alt", alternate);
@@ -75,8 +69,6 @@ function photographerFactory(data) {
         const ptagline = document.createElement( 'p' );
         ptagline.textContent = tagline;
 
-        
-        // article.appendChild(link);
         article.appendChild(h1);
         article.appendChild(pcity);
         article.appendChild(ptagline);

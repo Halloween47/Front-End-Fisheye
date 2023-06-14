@@ -2,16 +2,18 @@
 <!DOCTYPE html>
 <html lang="fr" xml:lang="fr">
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <title>Fisheye - photographe </title>
 </head>
 <body>
+
   <header aria-hidden="false">
     <img src="assets/images/logo.png" class="logo" alt="logo" aria-label="logo"/>
   </header>
+
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()" id="contactMe">Contactez-moi</button> -->
@@ -29,6 +31,7 @@
       
     </div>
   </main>
+
   <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="titleForm">
     <div class="modal">
       <header>
@@ -51,10 +54,16 @@
       </form>
     </div>
   </div>
+
+  <div id="lightbox"></div>
+  
   <script type="module" src="scripts/models/photographerModel.js"></script>
   <script type="module" src="scripts/pages/photographer.js"></script>
   <script type="module" src="scripts/utils/contactForm.js"></script>
   <script src="scripts/factories/photographer.js"></script>
   <script src="scripts/factories/media.js"></script>
+  <script src="scripts/factories/lightbox.js"></script>
+  <script src="scripts/lightbox/lightbox.js"></script>
+  
 </body>
 </html>

@@ -1,5 +1,7 @@
 body { position: relative;}
 h1 { margin: 0; padding: 0;}
+.hidden {display: none;}
+.show {display: flex;}
 
 .photograph-header {
     background-color: #FAFAFA;
@@ -158,14 +160,14 @@ h1 { margin: 0; padding: 0;}
     display: none;
     
     position: fixed;
-
+    
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     /* display: flex; */
     justify-content: center;
     align-items: center;
-
+    
     background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     height: 100vh;
@@ -233,8 +235,7 @@ form input, textarea {
 
 form input:focus {
     outline: 3px solid red;
-  }
-  
+}
 
 #form_submit {
     /* width: auto; */
@@ -242,3 +243,53 @@ form input:focus {
     padding: 10px;
 }
 
+
+/* ___LIGHTBOX___ */
+#lightbox {
+    display: none;
+    /* display: flex; */
+
+    position: fixed;
+    width: 100vw; height: 100vh;
+    /* background-color: #80808080; */
+    background-color: #fff;
+    top: 0px;
+    left : 0px;
+    
+    justify-content: center;
+    align-items: center;
+    
+}
+.lightbox-container {
+    /* background-color: red; */
+    width: 80%;height: 90vh;
+
+    display: flex;
+    justify-content: center;
+}
+.lightbox-container img {
+    width: auto; height: auto;
+}
+.zoneArrowNext, .zoneArrowBefore {
+    /* background-color:blue; */
+    width: 100px; height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    color: #901c1c
+
+}
+.zoneClose {
+    /* background-color:orange; */
+    width: 100%; height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+
+    color: #901c1c
+}
+/* ___FIN-LIGHTBOX___ */

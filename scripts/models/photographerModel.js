@@ -1,3 +1,4 @@
+// Modele pour la manipulation des données " Photographes "
 export class PhotographerModel {
   async getListePhotographers() {
     const listePhotographers = await fetch("data/photographers.json");
@@ -37,8 +38,18 @@ export class PhotographerModel {
       media => media.photographerId === idPhotographer
     )
     return listeMediaPhotographer;
-    
-    
-    
   }
+
+  async getMediasImageId(idPhotographer) {
+    const listePhotographers = await fetch('data/photographers.json');
+    const listePhotographersJson = await listePhotographers.json();
+    const medias = listePhotographersJson.media;
+
+    let listeMediaPhotographer = medias.filter( 
+      media => media.photographerId === idPhotographer
+    )
+    return listeMediaPhotographer;
+
+  }
+  
 }
