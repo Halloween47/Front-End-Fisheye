@@ -51,5 +51,23 @@ export class PhotographerModel {
     return listeMediaPhotographer;
 
   }
+
+  async getInfosMediaTarget(donneeCible) {
+    const listePhotographers = await fetch('data/photographers.json');
+    const listePhotographersJson = await listePhotographers.json();
+    const medias = listePhotographersJson.media;
+
+    // let listeMediaPhotographer = medias.filter( 
+    //   media => media.title === donneeCible
+    // )
+    let listeMediaPhotographer = medias.find(function(media) {
+      return media.title === donneeCible;
+    })
+    return listeMediaPhotographer
+
+
+    // return listeMediaPhotographer;
+
+  }
   
 }

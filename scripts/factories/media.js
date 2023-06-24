@@ -3,6 +3,7 @@ function mediaFactory(data) {
     const {id, photographerId, title, image, video, likes, date, price } = data;
     
     const idPhotographerMedia = `${photographerId}`;
+    const images = `${image}`;
     const photos = `assets/images/${image}`;
     const videos = `assets/images/${video}`;
     const titleMedia = `${title}`;
@@ -41,8 +42,9 @@ function mediaFactory(data) {
             
         } else {
             img.setAttribute("src",photos);
-            img.setAttribute("alt", titleMedia);
+            img.setAttribute("alt", images);
             img.setAttribute("aria-label", titleMedia);
+            img.setAttribute("class", "img-lightbox");
             // img.setAttribute("class", "async-element");
             containerImg.appendChild(img);
         }

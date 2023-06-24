@@ -27,6 +27,51 @@ async function displayData(photographers, medias) {
     mediasSection.appendChild(mediaCardDOM);
   });
   
+  // EVENT click pour lightbox
+  // const sectionMedia = document.querySelectorAll('.photograph-media');
+  // const sectionLightbox = document.querySelector('#lightbox');
+  
+  //   sectionMedia.forEach(image => {
+  //     image.addEventListener('click', imageTarget);
+  //   });
+  
+  //   function imageTarget(event) {
+  //     const imageClique = event.target;
+  //     const imageAlt = imageClique.alt;
+  //     const srcImg = 'assets/images/' + imageAlt;
+  //     let params = (new URL(document.location)).searchParams;
+  //     let id = parseInt(params.get('id'));  
+  
+  //     let lightbox = new Lightbox(medias);
+  //     lightbox.show(id, srcImg, imageAlt);
+  
+  //   }
+  
+  //___TEST___//
+  const sectionMedia = document.querySelectorAll('.photograph-media');
+  
+  function showLightbox(event) {
+    let params = (new URL(document.location)).searchParams;
+    let id = parseInt(params.get('id'));  
+    // console.log(id);
+
+    const imageClique = event.target;
+    // console.log(imageClique);
+    const imageAlt = imageClique.alt;
+    const titleImg = imageClique.alt;
+    console.log(imageAlt);
+    
+    let lightbox = new Lightbox(medias);
+    lightbox.show(id, imageAlt, titleImg);
+    
+  }
+  
+  sectionMedia.forEach(image => {
+    image.addEventListener('click', showLightbox);
+  });
+  
+  //___FIN-TEST___//
+  
 };
 
 // Gestion de l'affichage de la LIGHTBOX
@@ -36,18 +81,21 @@ async function displayLightbox(medias) {
   const sectionLightbox = document.querySelector('#lightbox');
   
   sectionMedia.forEach(article => {
-    article.addEventListener('click', (e) => {
-      
+    
+    article.addEventListener('click', () => {
       const photoClique = e.target;
       const srcImg = photoClique.src;
+      const altImg = photoClique.alt;
       
       // Construction de l'element
       const lightboxFactoryConst = lightboxFactory(medias);
-      const lightboxDOM = lightboxFactoryConst.getLightboxDOM(srcImg, medias);
+      const lightboxDOM = lightboxFactoryConst.getLightboxDOM(srcImg, altImg, medias);
       sectionLightbox.appendChild(lightboxDOM);
-    
+      
     });
-  });
+    
+  }); 
+  
 };
 
 // Fonction d'initialisation
@@ -62,7 +110,7 @@ async function init() {
   const mediaPhotographer = await photographerModel.getMediasPhotographer(id);  
   
   displayData(headerPhotographer, mediaPhotographer);
-  displayLightbox(mediaPhotographer, id);
+  // displayLightbox(mediaPhotographer, id);
 };
 
 init();
