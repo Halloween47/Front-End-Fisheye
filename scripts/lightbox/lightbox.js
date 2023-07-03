@@ -1,121 +1,167 @@
 
 class Lightbox {
-  constructor(listElement) {
+  constructor(listElement, currentPosition) {
     
     this.currentElement = null;
     this.listElement = listElement;
+    // this.currentPosition = currentPosition;
   }
   
-  // show(id, imageSrc, imageAlt) {
-  
-  //   const sectionLightbox = document.querySelector('#lightbox');
-  
-  //   const lightboxFactoryConst = lightboxFactory(this.listElement);
-  //   const lightboxDOM = lightboxFactoryConst.getLightboxDOM(imageSrc, imageAlt, this.listElement);
-  //   sectionLightbox.appendChild(lightboxDOM);
-  
-  //   this.listElement.forEach((media, index) => {
-  //     console.log(media);
-  //     console.log(index);
-  //   })
-  
-  // }
-  
-  show(id , jpg, titleImg) {
+  currentIndex(index) {
+    let currentIndex = index;
+    console.log(currentIndex);
+    return currentIndex;
     
-    const sectionLightbox = document.querySelector('#lightbox');
-    
-    // element jpg
-    let imageSrc = 'assets/images/' + jpg;
-    let imageAlt = titleImg;
-    // element titre
-    console.log(imageSrc);
-    
-    const lightboxFactoryConst = lightboxFactory(this.listElement);
-    const lightboxDOM = lightboxFactoryConst.getLightboxDOM(imageSrc, imageAlt, this.listElement);
-    sectionLightbox.appendChild(lightboxDOM);
-    
+  }
+  
+  showTest(index, srcImg) {
+    let currentPosition = index;
     let medias = this.listElement;
-    // console.log(medias);
+    // console.log(medias[currentPosition]);
     
-      let test = medias.filter( media => media.image === imageAlt);
-      medias.forEach((media, index) => {
-        
-      })
+    // APPARITION DE LA LIGHTBOX
+    const lightboxTest = document.querySelector('#lightbox-test');
+    lightboxTest.style.display = 'flex';
+    lightboxTest.setAttribute('aria-hidden', 'false');
     
+    let tableau = medias[currentPosition];
+    // console.log(tableau);
+    
+    let elementImage = 'image';
+    let elementVideo = 'video';
+    
+    if (elementImage in tableau) {
+      // console.log("Image est presente");
+      const lightboxImgEnCours = document.querySelector('#lightboxImg');
+      lightboxImgEnCours.style.display = "block";
+      const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
+      lightboxVideoEnCours.style.display = "none";
+
+      const image = medias[currentPosition].image;
+      const test = 'assets/images/' + image;
+      lightboxImgEnCours.src = test;
+      lightboxImgEnCours.alt = image;
+      
+    } 
+    else if (elementVideo in tableau) {
+      console.log("Video est presente");
+      const lightboxVideoEnCoursSource  = document.querySelector("#lightboxVideoSource")
+      
+      const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
+      lightboxVideoEnCours.style.display = "block";
+      const lightboxImgEnCours = document.querySelector('#lightboxImg');
+      lightboxImgEnCours.style.display = "none";
+      
+      const video = medias[currentPosition].video;
+      // console.log(tableau.indexof(video));
+      const videoSrc = 'assets/images/' + video;
+      lightboxImgEnCours.src = "";
+      lightboxImgEnCours.alt = "";
+      lightboxVideoEnCours.src = videoSrc;
+      lightboxVideoEnCours.alt = video;
+      // console.log(lightboxVideoEnCours.alt);
+      
+    }
     
   }
   
-  nextImage(titreImageEnCours, images) {
+  show(index) {
+    let currentPosition = index;
+    // console.log(currentPosition);
+    let medias = this.listElement;
     
-    //___EN-ORDRE___//
-    var lightboxContainer = document.querySelector('.lightbox-container');
+    let tailleTabMedias = medias.length;
+    // console.log(tailleTabMedias);
     
-    if (lightboxContainer) {
-      lightboxContainer.remove();
-      
-      // POSITION DE L'ELEMENT SUIVANT DANS LE TABLEAU
-      var positionImageNext = this.getNextPosition(titreImageEnCours);
-      // console.log(positionImageNext);
-      
-      // INFOS 
-      var infosimgNext = this.getInfosNext();
-      // console.log(infosimgNext);
-      var imgJPGNext = infosimgNext.image;
-      // console.log(imgJPGNext);
-      var imageSrc = 'assets/images/' + imgJPGNext;
-      // console.log(imageSrc);
-      var imageAlt = infosimgNext.title;
-      // // console.log(imageAlt);
-      
-      // DOM NOUVELLE CREATION
+    
+    let infosMediaTarget = medias[currentPosition];
+    
+    if (medias[currentPosition].image) {
+      let imageJPG = infosMediaTarget.image;
+      let src = 'assets/images/' + imageJPG;
+      // console.log(src);
+      // CIBLE
       const sectionLightbox = document.querySelector('#lightbox');
       
+      // CONSTRUCTION DE LA LIGHTBOX
       const lightboxFactoryConst = lightboxFactory(this.listElement);
-      const lightboxDOM = lightboxFactoryConst.getLightboxDOM(imageSrc, imageAlt, this.listElement);
-      sectionLightbox.appendChild(lightboxDOM);
-      
-    }  
+      const lightboxDOM = lightboxFactoryConst.getLightboxDOM(src, this.listElement, currentPosition);
+      sectionLightbox.appendChild(lightboxDOM); 
+    } 
+    // else {
+    //   let videoMP4 = infosMediaTarget.video;
+    //   let src = 'assets/images/' + videoMP4;
+    //   console.log(src);
+    
+    //   const sectionLightbox = document.querySelector('#lightbox');
+    //   // CONSTRUCTION DE LA LIGHTBOX
+    //   const lightboxFactoryConst = lightboxFactory(this.listElement);
+    //   const lightboxDOM = lightboxFactoryConst.getLightboxVideo(src, this.listElement, currentPosition);
+    //   sectionLightbox.appendChild(lightboxDOM); 
+    // }
     
   }
   
-  getElementById(id) {
-    return this.listElement.find(element => element.id ==id);
+  nextImage(currentPosition) { 
+    let medias = this.listElement;
+    let mediasLength = medias.length;
+    console.log(mediasLength);
+    let newPosition = currentPosition + 1;
+    
+    if (newPosition >= mediasLength) {
+      this.show(0);
+    } else {
+      this.show(newPosition)
+    }
+    
   }
   
-  getElementByTitle(title) {
-    let testRetourInfosAvecTitle = this.listElement.filter(  media => media.image === title  )
-    return testRetourInfosAvecTitle;
+  nextImageTest(currentPosition) { 
+    let medias = this.listElement;
+    let mediasLength = medias.length;
+    
+    let newPosition = currentPosition + 1;
+
+    if (newPosition >= mediasLength) {
+      this.showTest(0);
+      console.log('trop long');
+    } else {
+      this.showTest(newPosition)
+    }
+    
   }
   
-  getNextPosition(titreImageEnCours) {
+  beforeImage(currentPosition) { 
+    let medias = this.listElement;
+    let mediasLength = medias.length;
+    console.log(mediasLength);
+    let newPosition = currentPosition - 1;
     
-    // POSITION DE L'IMAGE EN COURS
-    let recupInfosMediaEnCours = this.listElement.filter(media => media.image === titreImageEnCours);
-    var infosMediaEnCours = recupInfosMediaEnCours[0];
-    // console.log(infosMediaEnCours);
-    var positionImageEnCours = this.listElement.indexOf(infosMediaEnCours);
-    console.log(positionImageEnCours);
+    if (newPosition < 0) {
+      let newPosition = mediasLength - 1;
+      this.show(newPosition);
+    } else {
+      this.show(newPosition)
+    }
     
-    // POSITION DE L'IMAGE SUIVANTE
-    var positionImgNext = positionImageEnCours+1;
-    console.log(positionImgNext);
-    this.positionImgNext = positionImgNext;
-    
-    // INFOS SUR ELEMENT NEXT 
-    var infosNextElement =  this.listElement[this.positionImgNext].image;
-    console.log(infosNextElement);
-    
-    // RETOUR POSITION DE L'IMAGE SUIVANTE
-    return this.positionImgNext;
   }
   
-  getInfosNext() {
-    // INFOS SUR ELEMENT NEXT 
-    var infosNextElement =  this.listElement[this.positionImgNext];
-    //  console.log(infosNextElement);
+  beforeImageTest(currentPosition) {
+    console.log('before');
     
-    return infosNextElement;
+    let medias = this.listElement;
+    let mediasLength = medias.length;
+    
+    let newPosition = currentPosition - 1;
+
+    if (newPosition < 0) {
+      let newPosition = mediasLength - 1;
+      this.showTest(newPosition);
+    } else {
+      this.showTest(newPosition)
+    }
+    
+
   }
   
 }

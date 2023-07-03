@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <title>Fisheye - photographe </title>
 </head>
 <body>
-
+  
   <header aria-hidden="false">
     <img src="assets/images/logo.png" class="logo" alt="logo" aria-label="logo"/>
   </header>
-
+  
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()" id="contactMe">Contactez-moi</button> -->
@@ -31,7 +31,7 @@
       
     </div>
   </main>
-
+  
   <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="titleForm">
     <div class="modal">
       <header>
@@ -54,8 +54,27 @@
       </form>
     </div>
   </div>
-
-  <div id="lightbox"></div>
+  
+  <div id="lightbox" aria-hidden="true" role="dialog"></div>
+  
+  <div id="lightbox-test" aria-hidden="true" role="dialog">
+    <div id="lightbox-test-container">
+      <div id="lightbox-test-arrowLeft" aria-label="photo précédente">
+        <i class="fa-solid fa-chevron-left fa-2xl"></i>
+      </div>
+      <img src="" alt="" id="lightboxImg">
+      <video controls="" id="lightboxVideo" alt="" aria-label="video du photographe">
+        <p>Votre navigateur ne prend pas en charge la vidéo.</p>
+        <source src="" type="video/mp4" id="lightboxVideoSource">
+      </video>
+      <div id="lightbox-test-arrowRight" aria-label="photo suivante">
+        <i class="fa-solid fa-chevron-right fa-2xl"></i>
+        <div id="zoneClose" aria-label="Fermeture de la modal">
+          <i class="fa-solid fa-xmark fa-2xl"></i>
+        </div>
+      </div>
+    </div>
+  </div>
   
   <script type="module" src="scripts/models/photographerModel.js"></script>
   <script type="module" src="scripts/pages/photographer.js"></script>
