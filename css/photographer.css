@@ -107,7 +107,9 @@ h1 { margin: 0; padding: 0;}
     width: 400px;
     height: auto;
     /* background-color: red; */
-    padding: 10px 0px;
+    padding: 30px 0px;
+
+    position: relative;
 }
 
 .container-img {
@@ -121,7 +123,9 @@ h1 { margin: 0; padding: 0;}
     height: 100%;
     object-fit: cover;
 }
-
+/*-----------------------------------------------------------*/
+/* ___LIKES___ */
+/*-----------------------------------------------------------*/
 .photograph-price {
     background-color: #DB8876;
     width: 376px; height: 49px;
@@ -142,7 +146,45 @@ h1 { margin: 0; padding: 0;}
     
     color: #000000;
 }
-
+#encartTJM {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.likesZone {
+    display: flex;
+    align-items: center;
+}
+.totalLikes {
+    margin-right: 10px;
+}
+.zoneIconLikes {
+    /* background-color:red; */
+     width: auto;height: auto;
+ 
+     position: absolute;
+     right: 0;
+     /* bottom: -10px; */
+ 
+     display: flex;
+     align-items: center;
+     padding-top: 10px;
+     color:#901C1C;
+ }
+ .zoneIconLikes p {
+     margin-right: 10px;
+     font-size: 24px;
+     margin: 0;
+     padding-right: 10px;
+     font-family: 'DM Sans';
+     font-weight: 900;
+ }
+ .zoneIconLikes i {
+     color:#901C1C;
+ }
+/*----------------------------------------------*/
+/* MODAL */
+/*-----------------------------------------------*/
 .contact_button {
     font-size: 20px;
     font-weight: bold;
@@ -243,8 +285,9 @@ form input:focus {
     padding: 10px;
 }
 
-
+/*---------------------------------------------------*/
 /* ___LIGHTBOX___ */
+/*---------------------------------------------------*/
 #lightbox {
     display: none;
     /* display: flex; */
@@ -301,8 +344,10 @@ form input:focus {
     justify-content: center;
     align-items: center;
 }
-/* ___FIN-LIGHTBOX___ */
+
+/*-------------------------------------------------------*/
 /* ___LIGHTBOX-TEST___ */
+/*-------------------------------------------------------*/
 #lightbox-test {
     /* background-color: #80808080; */
     display: none;
@@ -356,4 +401,4 @@ form input:focus {
 #lightbox-test-container video {
     display: none;
 }
-/* ___FIN-LIGHTBOX-TEST___ */
+

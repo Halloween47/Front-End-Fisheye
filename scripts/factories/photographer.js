@@ -7,6 +7,7 @@ function photographerFactory(data) {
     const ariaLabel = `${tagline}`;
     const photographer = `photographer.html?id=${id}name=${alternate}`;
     const cityName = `${city}` + ',' ;
+    const pricePerMonth = `${price}`;
     
     // Gestion de la page " index "
     function getUserCardDOM() {
@@ -35,7 +36,6 @@ function photographerFactory(data) {
         ptagline.textContent = tagline;
         
         const pprice = document.createElement( 'p' );
-        pprice.textContent = price;
         
         article.appendChild(link);
         link.appendChild(img);
@@ -46,12 +46,12 @@ function photographerFactory(data) {
         
         return (article);
     }
-
+    
     // Gestion de la page " Photographes "
     function getPhotographersCardDOM() {
         const article = document.createElement( 'article' );
         const headerPhoto = document.querySelector('.photograph-header');
-
+        
         const roundedImg = document.createElement('div');
         roundedImg.setAttribute('class', 'rounded-img');
         
@@ -68,7 +68,7 @@ function photographerFactory(data) {
         
         const ptagline = document.createElement( 'p' );
         ptagline.textContent = tagline;
-
+        
         article.appendChild(h1);
         article.appendChild(pcity);
         article.appendChild(ptagline);
@@ -78,7 +78,34 @@ function photographerFactory(data) {
         return (article);
     }
     
-    return { name, picture, city, tagline, price, getUserCardDOM, getPhotographersCardDOM }
+    function getTotalLikesCardDOM() {
+        // const photographerPrice = document.querySelector(".photograph-price");
+        const zoneEncart = document.createElement('div');
+        zoneEncart.setAttribute('id','encartTJM');
+        
+        const photographerPriceZone = document.createElement('div')
+        photographerPriceZone.setAttribute('class', 'priceZone');
+        photographerPriceZone.textContent = pricePerMonth + ' / jour';
+        
+        const totalLikesZone = document.createElement('div')
+        totalLikesZone.setAttribute('class', 'likesZone');
+        
+        const totalLikes =document.createElement('div');
+        totalLikes.setAttribute('class', 'totalLikes');
+        totalLikes.textContent = pricePerMonth;       
+        
+        const totalLikesIcon = document.createElement('i');
+        totalLikesIcon.setAttribute('class', 'fa-solid fa-heart fa-sm')
+        
+        zoneEncart.appendChild(totalLikesZone);
+        zoneEncart.appendChild(photographerPriceZone);
+        totalLikesZone.appendChild(totalLikes);
+        totalLikesZone.appendChild(totalLikesIcon);
+        
+        return (zoneEncart);
+    }
+    
+    return { name, picture, city, tagline, price, getUserCardDOM, getPhotographersCardDOM, getTotalLikesCardDOM }
     
 }
 

@@ -7,6 +7,7 @@ function mediaFactory(data) {
     const photos = `assets/images/${image}`;
     const videos = `assets/images/${video}`;
     const titleMedia = `${title}`;
+    const likePhoto = `${likes}`;
     
     function checkVideo() {
         if (video) {
@@ -48,9 +49,26 @@ function mediaFactory(data) {
             // img.setAttribute("class", "async-element");
             containerImg.appendChild(img);
         }
-         
+        
+        // Gestion des LIKES
+        const zoneIconLikes = document.createElement('div');
+        const iconLike = document.createElement('i');
+        let nombreLikes = document.createElement('p');
+        
+        zoneIconLikes.setAttribute('class', 'zoneIconLikes');
+        iconLike.setAttribute('class', 'fa-solid fa-heart fa-xl');
+        nombreLikes.setAttribute('class', 'nombreLikes');
+        // nombreLikes.textContent = '12';
+        nombreLikes.textContent = likePhoto;
+
+        // console.log(likePhoto);
+          
+        article.appendChild(zoneIconLikes);
+        zoneIconLikes.appendChild(nombreLikes);
+        zoneIconLikes.appendChild(iconLike);
+        
         return (article);
     }
-        
+    
     return { idPhotographerMedia, getMediaCardDOM, id }
 }

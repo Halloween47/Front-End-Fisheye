@@ -16,7 +16,10 @@ async function displayData(photographers, medias) {
   
   // SECTION PRIX
   const photographerPrice = document.querySelector(".photograph-price");
-  photographerPrice.textContent = photographers.price + ' / jour';
+  // photographerPrice.textContent =  photographers.price + ' / jour';
+  const likesCardDOM = photographerModel.getTotalLikesCardDOM();
+  const sectionLikes = photographerPrice.appendChild(likesCardDOM);
+  
   
   // SECTION MEDIA
   const mediasSection = document.querySelector(".photograph-media");
@@ -28,47 +31,71 @@ async function displayData(photographers, medias) {
   });
   const sectionMedia = document.querySelectorAll('.photograph-media');
   
-  // LIGHTBOX
-  // function showLightbox(event) {
-  //   // let params = (new URL(document.location)).searchParams;
-  //   // let id = parseInt(params.get('id'));  
-  //   // console.log(id);
+  // Gestion des LIKES
+  // ________________________
+  function handleClick() {
+    let zoneLike = this;
+    let zoneNombre = zoneLike.firstChild;
+    let nombreLikesContent = zoneNombre.textContent;
+    console.log(nombreLikesContent);
+    let nombreLikesConvert = parseInt(nombreLikesContent);
+    let isLiked = nombreLikesConvert + 1;
+    let newNumberToString = isLiked.toString();
+    nombreLikesContent = newNumberToString;
+    zoneNombre.textContent = newNumberToString;
+    
+    // Supprimez l'écouteur d'événements après une seule utilisation
+    zoneLike.removeEventListener("click", handleClick);
+    
+    // Total LIKES
+    const totalLikes = [];
+    console.log(zoneIconLikes);
+    zoneIconLikes.forEach(like => {
+      const nombreLike = like.firstChild;
+      const nombreLikeImage = nombreLike.textContent;
+      const nombreLikeImageConvert = parseInt(nombreLikeImage);
+      console.log(nombreLikeImageConvert);
+      totalLikes.push(nombreLikeImageConvert)
+    })
+    console.log(totalLikes);
+    let nbTotlaLikes = 0;
+    for (let index = 0; index < totalLikes.length; index++) {
+      // const element = totalLikes[index];
+      nbTotlaLikes += totalLikes[index]
+    }
+    console.log(nbTotlaLikes);
+    let zoneTotalLikes = document.querySelector('.totalLikes');
+    zoneTotalLikes.textContent = nbTotlaLikes;
+  }
   
-  //   const imageClique = event.target;
-  //   // console.log(imageClique);
-  //   const imageAlt = imageClique.alt;
-  //   const titleImg = imageClique.alt;
-  //   // console.log(imageAlt);
+  var zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
   
-  //   // CONNAISSANCE DE LA POSITION EN COURS
-  //   // console.log(medias);
-  //   let filter = medias.filter(media => media.image === imageAlt)
-  //   let positionCible = filter[0];
-  //   // console.log(positionCible);
-  //   let currentPosition = medias.indexOf(positionCible);
-  //   // console.log(currentPosition);
+  zoneIconLikes.forEach(function(zoneLike) {
+    zoneLike.addEventListener("click", handleClick);
+  });
   
-  //   // Gestion "aria-hidden"
-  //   const header = document.querySelector('header');
-  //   const main = document.querySelector('main');
-  //   const lightboxId = document.querySelector('#lightbox');
-  //   header.setAttribute('aria-hidden', 'true')
-  //   main.setAttribute('aria-hidden', 'true')
-  //   lightboxId.setAttribute('aria-hidden', 'false')
+  // Total LIKES
+  const totalLikes = [];
+  console.log(zoneIconLikes);
+  zoneIconLikes.forEach(like => {
+    const nombreLike = like.firstChild;
+    const nombreLikeImage = nombreLike.textContent;
+    const nombreLikeImageConvert = parseInt(nombreLikeImage);
+    console.log(nombreLikeImageConvert);
+    totalLikes.push(nombreLikeImageConvert)
+  })
+  console.log(totalLikes);
+  let nbTotlaLikes = 0;
+  for (let index = 0; index < totalLikes.length; index++) {
+    // const element = totalLikes[index];
+    nbTotlaLikes += totalLikes[index]
+  }
+  console.log(nbTotlaLikes);
+  let zoneTotalLikes = document.querySelector('.totalLikes');
+  zoneTotalLikes.textContent = nbTotlaLikes;
+}
   
-  
-  //   let lightbox = new Lightbox(medias, currentPosition);
-  //   // lightbox.show(id, imageAlt, titleImg, currentPosition);
-  //   lightbox.show(currentPosition);
-  
-  // }
-  
-  // sectionMedia.forEach(image => {
-  //   image.addEventListener('click', showLightbox);
-  // });
-  
-  
-};
+// };
 
 // Gestion de l'affichage de la LIGHTBOX
 async function displayLightbox(medias) {
@@ -77,9 +104,9 @@ async function displayLightbox(medias) {
   const sectionLightbox = document.querySelector('#lightbox-test');
   
   sectionMedia.forEach(article => {
-    
+    let containerImg = document.querySelector('.container-img');
     // Apparition de l'image cliqué
-    article.addEventListener('click', (e) => {
+    containerImg.addEventListener('click', (e) => {
       const photoClique = e.target;
       const srcImg = photoClique.src;
       const imageAlt = photoClique.alt;
@@ -215,7 +242,7 @@ async function displayLightbox(medias) {
     
     // Event touche clavier
     document.addEventListener("keydown", function(event) {
-
+      
       const lightboxAriaHidden = sectionLightbox.getAttribute('aria-hidden');
       console.log(lightboxAriaHidden);
       
