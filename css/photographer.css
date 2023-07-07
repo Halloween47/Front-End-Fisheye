@@ -87,9 +87,10 @@ h1 { margin: 0; padding: 0;}
 }
 
 .photograph-filter option {
-    background-color: black;
+    background: #911C1C;
     
     border-bottom-color: #fff;
+    border-radius: 50%;
 }
 
 .photograph-media {

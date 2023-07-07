@@ -29,9 +29,8 @@ async function displayData(photographers, medias) {
     const mediaCardDOM = mediaModel.getMediaCardDOM();
     mediasSection.appendChild(mediaCardDOM);
   });
-  const sectionMedia = document.querySelectorAll('.photograph-media');
   
-  // Gestion des LIKES
+  // SECTION LIKES
   // ________________________
   function handleClick() {
     let zoneLike = this;
@@ -67,34 +66,141 @@ async function displayData(photographers, medias) {
     let zoneTotalLikes = document.querySelector('.totalLikes');
     zoneTotalLikes.textContent = nbTotlaLikes;
   }
-  
   var zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
-  
   zoneIconLikes.forEach(function(zoneLike) {
     zoneLike.addEventListener("click", handleClick);
   });
-  
-  // Total LIKES
+  // -- Total LIKES
   const totalLikes = [];
-  console.log(zoneIconLikes);
+  // console.log(zoneIconLikes);
   zoneIconLikes.forEach(like => {
     const nombreLike = like.firstChild;
     const nombreLikeImage = nombreLike.textContent;
     const nombreLikeImageConvert = parseInt(nombreLikeImage);
-    console.log(nombreLikeImageConvert);
+    // console.log(nombreLikeImageConvert);
     totalLikes.push(nombreLikeImageConvert)
   })
-  console.log(totalLikes);
+  // console.log(totalLikes);
   let nbTotlaLikes = 0;
   for (let index = 0; index < totalLikes.length; index++) {
     // const element = totalLikes[index];
     nbTotlaLikes += totalLikes[index]
   }
-  console.log(nbTotlaLikes);
+  // console.log(nbTotlaLikes);
   let zoneTotalLikes = document.querySelector('.totalLikes');
   zoneTotalLikes.textContent = nbTotlaLikes;
-}
   
+  
+  // SECTION filter
+  function filterData() {
+    const filterPopularite = document.getElementById('photograph-filter');
+    const filterValue = filterPopularite.value;
+    if (filterValue === 'date') {
+      const mediasSection = document.querySelector(".photograph-media");
+      mediasSection.innerHTML = '';
+      
+      console.log('DATE !!!');
+      
+      console.log(medias);
+      
+      medias.sort((a, b) =>
+      new Date(a.date) - new Date(b.date)
+      );
+      
+      console.log(medias);
+      
+      
+      medias.forEach((media) => {
+        const mediaModel = mediaFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediasSection.appendChild(mediaCardDOM);
+      });
+      
+      ///////
+    } else if (filterValue === "titre") {
+      console.log('TITRE !!! !!!');
+      
+      const mediasSection = document.querySelector(".photograph-media");
+      mediasSection.innerHTML = '';
+      
+      console.log('DATE !!!');
+      
+      console.log(medias);
+      
+      medias.sort((a, b) =>
+      a.title.localeCompare(b.title)
+      );
+      
+      console.log(medias);
+      
+      
+      medias.forEach((media) => {
+        const mediaModel = mediaFactory(media);
+        const mediaCardDOM = mediaModel.getMediaCardDOM();
+        mediasSection.appendChild(mediaCardDOM);
+      });
+      
+    }
+    else if (filterValue === 'popularite') {
+      console.log('POPULARITE !!! !!!');
+      // // Récupérer le conteneur des articles
+      // const mediasSection = document.querySelector(".photograph-media");
+      // mediasSection.innerHTML = '';
+      
+      // // Récupérer tous les articles
+      // const articles = Array.from(document.querySelectorAll('.articleMedia'));
+      // // console.log(articles);
+      // // articles.sort();
+      // // console.log(articles);
+      
+      // // Trier les articles en fonction du nombre de likes
+      // articles.sort((a, b) => {
+      //   // articles.sort(function(a, b) {
+      //   const likesA = parseInt(a.querySelector('.nombreLikes').textContent);
+      //   const likesB = parseInt(b.querySelector('.nombreLikes').textContent);
+      //   return likesB - likesA; // Tri décroissant
+      // });
+      
+      // // Réorganiser les articles dans le conteneur
+      // articles.forEach(article => {
+      //   mediasSection.appendChild(article);
+      // });
+
+///////////////////////////////////////////////////////
+
+const mediasSection = document.querySelector(".photograph-media");
+mediasSection.innerHTML = '';
+
+
+console.log(medias);
+
+medias.sort((a, b) => {
+    const likesA = a.likes;
+    const likesB = b.likes;
+    return likesB - likesA; // Tri décroissant
+  });
+
+console.log(medias);
+
+
+medias.forEach((media) => {
+  const mediaModel = mediaFactory(media);
+  const mediaCardDOM = mediaModel.getMediaCardDOM();
+  mediasSection.appendChild(mediaCardDOM);
+});
+///////////////////////////////////////////////////////
+
+
+    }
+  }
+  
+  const filterPopularite = document.getElementById('photograph-filter');
+  filterPopularite.addEventListener('change', filterData);
+  
+  
+  //----------------------------------------
+}
+
 // };
 
 // Gestion de l'affichage de la LIGHTBOX

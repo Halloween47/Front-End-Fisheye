@@ -16,6 +16,7 @@ function mediaFactory(data) {
     }    
     function getMediaCardDOM() {
         const article = document.createElement( 'article' );
+        article.setAttribute('class', 'articleMedia');
         
         const containerImg = document.createElement('div');
         containerImg.setAttribute('class', 'container-img');
