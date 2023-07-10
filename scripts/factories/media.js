@@ -1,6 +1,7 @@
 // Factory pour les données " MEDIAS "
+// eslint-disable-next-line no-unused-vars
 function mediaFactory(data) {
-    const {id, photographerId, title, image, video, likes, date, price } = data;
+    const {id, photographerId, title, image, video, likes } = data;
     
     const idPhotographerMedia = `${photographerId}`;
     const images = `${image}`;
@@ -24,6 +25,7 @@ function mediaFactory(data) {
         
         const img = document.createElement( 'img' );
         
+        // Cas pour les VIDEOS
         if (checkVideo()) {
             const video = document.createElement('video');
             video.setAttribute('controls', "");
@@ -42,7 +44,9 @@ function mediaFactory(data) {
             source.setAttribute('type', "video/mp4");
             video.appendChild(source);
             
-        } else {
+        } 
+        // Cas pour les IMAGES
+        else {
             img.setAttribute("src",photos);
             img.setAttribute("alt", images);
             img.setAttribute("aria-label", titleMedia);
@@ -51,22 +55,32 @@ function mediaFactory(data) {
             containerImg.appendChild(img);
         }
         
+        // TITRE de l'image
+        var titreImage = document.createElement('p');
+        titreImage.setAttribute('class', 'titre-image');
+        titreImage.textContent = titleMedia;
+        
+        
         // Gestion des LIKES
         const zoneIconLikes = document.createElement('div');
+        const zoneNbLikes = document.createElement('div');
         const iconLike = document.createElement('i');
         let nombreLikes = document.createElement('p');
         
         zoneIconLikes.setAttribute('class', 'zoneIconLikes');
         iconLike.setAttribute('class', 'fa-solid fa-heart fa-xl');
         nombreLikes.setAttribute('class', 'nombreLikes');
+        zoneNbLikes.setAttribute('class', 'zoneNbLikes');
         // nombreLikes.textContent = '12';
         nombreLikes.textContent = likePhoto;
-
+        
         // console.log(likePhoto);
-          
+        
         article.appendChild(zoneIconLikes);
-        zoneIconLikes.appendChild(nombreLikes);
-        zoneIconLikes.appendChild(iconLike);
+        zoneIconLikes.appendChild(titreImage);
+        zoneIconLikes.appendChild(zoneNbLikes);
+        zoneNbLikes.appendChild(nombreLikes);
+        zoneNbLikes.appendChild(iconLike);
         
         return (article);
     }

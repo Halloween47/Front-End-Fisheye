@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 // Factory dédié à la LIGHTBOX
+// eslint-disable-next-line no-unused-vars
 function lightboxFactory(data) {
-    const {id, photographerId, title, image, video, likes, date, price } = data;
+    const {title, image} = data;
     
     const alternate = `${title}`;
     const ariaLabel = `${image}`;
-    const mp4 = `${video}`
     
     function getLightboxDOM(srcImg, images, currentPosition) {
         

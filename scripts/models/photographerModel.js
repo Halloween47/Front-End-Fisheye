@@ -19,7 +19,10 @@ export class PhotographerModel {
     const listePhotographersJson = await listePhotographers.json();
     const photographers = listePhotographersJson.photographers;
     
-    let name = photographers.find(function(photographer) {
+    // let name = photographers.find(function(photographer) {
+    //   return photographer.name === idPhotographer;
+    // })
+    photographers.find(function(photographer) {
       return photographer.name === idPhotographer;
     })
     

@@ -1,13 +1,11 @@
 // Je récupére mon modèle
 import { PhotographerModel } from "../models/photographerModel.js";
 
-const body = document.querySelector('body');
 const header = document.querySelector('header');
 const main = document.querySelector('main');
 const buttonContactMe = document.getElementById('contactMe');
 
 const formulaireIntegral = document.getElementById("contact_modal");
-const modal = document.getElementsByClassName('modal');
 const titleForm = document.getElementById('titleForm');
 const closeModal = document.getElementById('closeModal');
 

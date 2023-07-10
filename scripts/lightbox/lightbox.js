@@ -1,6 +1,7 @@
 
+// eslint-disable-next-line no-unused-vars
 class Lightbox {
-  constructor(listElement, currentPosition) {
+  constructor(listElement) {
     
     this.currentElement = null;
     this.listElement = listElement;
@@ -14,7 +15,7 @@ class Lightbox {
     
   }
   
-  showTest(index, srcImg) {
+  showTest(index) {
     let currentPosition = index;
     let medias = this.listElement;
     // console.log(medias[currentPosition]);
@@ -45,7 +46,6 @@ class Lightbox {
     } 
     else if (elementVideo in tableau) {
       console.log("Video est presente");
-      const lightboxVideoEnCoursSource  = document.querySelector("#lightboxVideoSource")
       
       const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
       lightboxVideoEnCours.style.display = "block";
@@ -70,8 +70,7 @@ class Lightbox {
     // console.log(currentPosition);
     let medias = this.listElement;
     
-    let tailleTabMedias = medias.length;
-    // console.log(tailleTabMedias);
+    
     
     
     let infosMediaTarget = medias[currentPosition];
@@ -84,6 +83,7 @@ class Lightbox {
       const sectionLightbox = document.querySelector('#lightbox');
       
       // CONSTRUCTION DE LA LIGHTBOX
+      // eslint-disable-next-line no-undef
       const lightboxFactoryConst = lightboxFactory(this.listElement);
       const lightboxDOM = lightboxFactoryConst.getLightboxDOM(src, this.listElement, currentPosition);
       sectionLightbox.appendChild(lightboxDOM); 

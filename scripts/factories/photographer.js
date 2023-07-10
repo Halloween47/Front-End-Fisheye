@@ -1,4 +1,5 @@
 // Factory pour les données " PHOTOGRAPHES "
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { name, portrait, city, tagline, price, id, country } = data;
     
@@ -36,6 +37,7 @@ function photographerFactory(data) {
         ptagline.textContent = tagline;
         
         const pprice = document.createElement( 'p' );
+        pprice.textContent = pricePerMonth + '€/jour';
         
         article.appendChild(link);
         link.appendChild(img);

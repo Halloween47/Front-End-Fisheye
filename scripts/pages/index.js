@@ -27,11 +27,12 @@ async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   
   photographers.forEach((photographer) => {
+    // eslint-disable-next-line no-undef
     const photographerModel = photographerFactory(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });
-};
+}
 
 // Exemple pour une application de "JSON.stringify()"
 // const obj = { name: "John", age: 30, city: "New York" };
@@ -58,7 +59,7 @@ async function init() {
   // Affiche les données
   displayData(photographers);
   test();
-};
+}
 
 init();
 

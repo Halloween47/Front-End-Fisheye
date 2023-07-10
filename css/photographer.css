@@ -163,14 +163,18 @@ h1 { margin: 0; padding: 0;}
     /* background-color:red; */
      width: auto;height: auto;
  
-     position: absolute;
-     right: 0;
-     /* bottom: -10px; */
+     /* position: absolute;
+     right: 0; */
+     position: relative;
  
      display: flex;
      align-items: center;
      padding-top: 10px;
      color:#901C1C;
+ }
+ .titre-image {
+    /* background-color: #901c1c; */
+    width: 100%;
  }
  .zoneIconLikes p {
      margin-right: 10px;
@@ -182,6 +186,10 @@ h1 { margin: 0; padding: 0;}
  }
  .zoneIconLikes i {
      color:#901C1C;
+ }
+ .zoneNbLikes {
+    display: flex;
+    align-items: center;
  }
 /*----------------------------------------------*/
 /* MODAL */
