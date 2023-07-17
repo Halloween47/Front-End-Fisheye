@@ -220,31 +220,38 @@ async function displayData(photographers, medias) {
       
       
     }
-////////////////////////////
-function apparitionElementClique(e) {
-  const photoClique = e.target;
-  const srcImg = photoClique.src;
-  const imageAlt = photoClique.alt;
-  // console.log(srcImg);
-
-  let filter = medias.filter(media => media.image === imageAlt)
-    let positionCible = filter[0];
-    let currentPosition = medias.indexOf(positionCible);
-    // console.log(currentPosition);
-
-    //  Apparition de l'element cliqué
-    let lightbox = new Lightbox(medias, currentPosition);
-    lightbox.showTest(currentPosition, srcImg)
-}
-
-let toutLesMedias = document.querySelectorAll('.articleMedia');
-toutLesMedias.forEach(container => {
-  // console.log(container);
-  var containerImg = container.firstChild;
-  // console.log(containerImg);
-  containerImg.addEventListener('click',apparitionElementClique)
-})
-////////////////////////////
+    function apparitionElementClique(e) {
+      const photoClique = e.target;
+      const srcImg = photoClique.src;
+      const imageAlt = photoClique.alt;
+      // console.log(srcImg);
+      
+      let filter = medias.filter(media => media.image === imageAlt)
+      let positionCible = filter[0];
+      let currentPosition = medias.indexOf(positionCible);
+      // console.log(currentPosition);
+      
+      //  Apparition de l'element cliqué
+      let lightbox = new Lightbox(medias, currentPosition);
+      lightbox.showTest(currentPosition, srcImg)
+    }
+    
+    let toutLesMedias = document.querySelectorAll('.articleMedia');
+    toutLesMedias.forEach(container => {
+      // console.log(container);
+      var containerImg = container.firstChild;
+      // console.log(containerImg);
+      containerImg.addEventListener('click',apparitionElementClique)
+    })
+    
+    
+    ////////////////////////////
+    var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
+  
+  zoneNbLikes.forEach(function(zoneLike) {
+    zoneLike.addEventListener("click", handleClick);
+  });
+    ////////////////////////////
 
   }
   
