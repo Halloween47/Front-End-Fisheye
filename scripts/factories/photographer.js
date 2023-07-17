@@ -1,4 +1,7 @@
-// Factory pour les données " PHOTOGRAPHES "
+// #############################################################
+// Factory dédié à la mise en forme des données PHOTOGRAPHES
+// #############################################################
+
 // eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { name, portrait, city, tagline, price, id, country } = data;
@@ -11,6 +14,8 @@ function photographerFactory(data) {
     const pricePerMonth = `${price}`;
     
     // Gestion de la page " index "
+    // ________________________
+    
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         
@@ -21,6 +26,13 @@ function photographerFactory(data) {
         link.addEventListener("click", () => {
             console.log(data);
         })
+
+        // Container image
+
+        const containerImg = document.createElement('div');
+        containerImg.setAttribute("class", "container-img");
+
+
         
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
@@ -31,7 +43,7 @@ function photographerFactory(data) {
         h2.textContent = name;
         
         const pcity = document.createElement( 'p' );
-        pcity.textContent = city;
+        pcity.textContent = city + ', ' + country;
         
         const ptagline = document.createElement( 'p' );
         ptagline.textContent = tagline;
@@ -40,7 +52,11 @@ function photographerFactory(data) {
         pprice.textContent = pricePerMonth + '€/jour';
         
         article.appendChild(link);
-        link.appendChild(img);
+        
+        link.appendChild(containerImg);
+        containerImg.appendChild(img);
+        // link.appendChild(img);
+        
         link.appendChild(h2);
         article.appendChild(pcity);
         article.appendChild(ptagline);
@@ -50,6 +66,8 @@ function photographerFactory(data) {
     }
     
     // Gestion de la page " Photographes "
+    // ________________________
+    
     function getPhotographersCardDOM() {
         const article = document.createElement( 'article' );
         const headerPhoto = document.querySelector('.photograph-header');
@@ -87,7 +105,7 @@ function photographerFactory(data) {
         
         const photographerPriceZone = document.createElement('div')
         photographerPriceZone.setAttribute('class', 'priceZone');
-        photographerPriceZone.textContent = pricePerMonth + ' / jour';
+        photographerPriceZone.textContent = pricePerMonth + '€ / jour';
         
         const totalLikesZone = document.createElement('div')
         totalLikesZone.setAttribute('class', 'likesZone');

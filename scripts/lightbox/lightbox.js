@@ -1,3 +1,6 @@
+// #############################################################
+// Gestion du comportement de la LIGHTBOX
+// #############################################################
 
 // eslint-disable-next-line no-unused-vars
 class Lightbox {
@@ -21,9 +24,11 @@ class Lightbox {
     // console.log(medias[currentPosition]);
     
     // APPARITION DE LA LIGHTBOX
-    const lightboxTest = document.querySelector('#lightbox-test');
-    lightboxTest.style.display = 'flex';
-    lightboxTest.setAttribute('aria-hidden', 'false');
+    // ________________________
+    
+    const lightbox = document.querySelector('#lightbox-test');
+    lightbox.style.display = 'flex';
+    lightbox.setAttribute('aria-hidden', 'false');
     
     let tableau = medias[currentPosition];
     // console.log(tableau);
@@ -62,61 +67,15 @@ class Lightbox {
       // console.log(lightboxVideoEnCours.alt);
       
     }
+
+    // Affichage titre image
+    let elementTitre = document.querySelector('#lightboxTitre');
+    // elementTitre.textContent = "test";
+    elementTitre.textContent = tableau.title;
     
   }
-  
-  show(index) {
-    let currentPosition = index;
-    // console.log(currentPosition);
-    let medias = this.listElement;
-    
-    
-    
-    
-    let infosMediaTarget = medias[currentPosition];
-    
-    if (medias[currentPosition].image) {
-      let imageJPG = infosMediaTarget.image;
-      let src = 'assets/images/' + imageJPG;
-      // console.log(src);
-      // CIBLE
-      const sectionLightbox = document.querySelector('#lightbox');
-      
-      // CONSTRUCTION DE LA LIGHTBOX
-      // eslint-disable-next-line no-undef
-      const lightboxFactoryConst = lightboxFactory(this.listElement);
-      const lightboxDOM = lightboxFactoryConst.getLightboxDOM(src, this.listElement, currentPosition);
-      sectionLightbox.appendChild(lightboxDOM); 
-    } 
-    // else {
-    //   let videoMP4 = infosMediaTarget.video;
-    //   let src = 'assets/images/' + videoMP4;
-    //   console.log(src);
-    
-    //   const sectionLightbox = document.querySelector('#lightbox');
-    //   // CONSTRUCTION DE LA LIGHTBOX
-    //   const lightboxFactoryConst = lightboxFactory(this.listElement);
-    //   const lightboxDOM = lightboxFactoryConst.getLightboxVideo(src, this.listElement, currentPosition);
-    //   sectionLightbox.appendChild(lightboxDOM); 
-    // }
-    
-  }
-  
+
   nextImage(currentPosition) { 
-    let medias = this.listElement;
-    let mediasLength = medias.length;
-    console.log(mediasLength);
-    let newPosition = currentPosition + 1;
-    
-    if (newPosition >= mediasLength) {
-      this.show(0);
-    } else {
-      this.show(newPosition)
-    }
-    
-  }
-  
-  nextImageTest(currentPosition) { 
     let medias = this.listElement;
     let mediasLength = medias.length;
     
@@ -130,23 +89,8 @@ class Lightbox {
     }
     
   }
-  
-  beforeImage(currentPosition) { 
-    let medias = this.listElement;
-    let mediasLength = medias.length;
-    console.log(mediasLength);
-    let newPosition = currentPosition - 1;
-    
-    if (newPosition < 0) {
-      let newPosition = mediasLength - 1;
-      this.show(newPosition);
-    } else {
-      this.show(newPosition)
-    }
-    
-  }
-  
-  beforeImageTest(currentPosition) {
+
+  beforeImage(currentPosition) {
     console.log('before');
     
     let medias = this.listElement;

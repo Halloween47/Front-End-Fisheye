@@ -1,13 +1,20 @@
+// #############################################################
+// Gestion de l'affichage des données à l'écran pour "photographer.html"
+// #############################################################
+
 /* eslint-disable no-undef */
-//Mettre le code JavaScript lié à la page photographer.html
 
 // Je récupére mon modèle
+// ________________________
+
 import { PhotographerModel } from "../models/photographerModel.js";
 
 // Gestion de l'affichage des données du photographe à l'écran
 async function displayData(photographers, medias) {
   
   // SECTION HEADER //
+  // ________________________
+
   const photographerSection = document.querySelector(".photograph-header");
   var photographerSectionFirstChild = photographerSection.firstChild;
   // eslint-disable-next-line no-undef
@@ -17,14 +24,17 @@ async function displayData(photographers, medias) {
   photographerSection.insertBefore(section, photographerSectionFirstChild);
   
   // SECTION PRIX
+  // ________________________
+
   const photographerPrice = document.querySelector(".photograph-price");
   // photographerPrice.textContent =  photographers.price + ' / jour';
   const likesCardDOM = photographerModel.getTotalLikesCardDOM();
   // const sectionLikes = photographerPrice.appendChild(likesCardDOM);
   photographerPrice.appendChild(likesCardDOM);
   
-  
   // SECTION MEDIA
+  // ________________________
+
   const mediasSection = document.querySelector(".photograph-media");
   
   medias.forEach((media) => {
@@ -36,6 +46,7 @@ async function displayData(photographers, medias) {
   
   // SECTION LIKES
   // ________________________
+
   function handleClick() {
     let zoneNbLike = this;
     let zoneNombre = zoneNbLike.firstChild;
@@ -78,7 +89,10 @@ async function displayData(photographers, medias) {
   zoneNbLikes.forEach(function(zoneLike) {
     zoneLike.addEventListener("click", handleClick);
   });
+
   // -- Total LIKES
+  // ________________________
+
   const totalLikes = [];
   // console.log(zoneIconLikes);
   zoneNbLikes.forEach(like => {
@@ -100,6 +114,8 @@ async function displayData(photographers, medias) {
   
   
   // SECTION filter
+  // ________________________
+
   function filterData() {
     const filterPopularite = document.getElementById('photograph-filter');
     const filterValue = filterPopularite.value;
@@ -123,7 +139,9 @@ async function displayData(photographers, medias) {
         const mediaCardDOM = mediaModel.getMediaCardDOM();
         mediasSection.appendChild(mediaCardDOM);
       });
-      
+      ////////////////////////////////////////////////////////
+     
+  ////////////////////////////////////////////////////////
       ///////
     } else if (filterValue === "titre") {
       console.log('TITRE !!! !!!');
@@ -206,14 +224,40 @@ async function displayData(photographers, medias) {
   
   const filterPopularite = document.getElementById('photograph-filter');
   filterPopularite.addEventListener('change', filterData);
+
+  //////////////////////
+   // ###### FONCTIONS ASSOCIE A LA LIGHTBOX ###### //
+   function apparitionElementClique(e) {
+    const photoClique = e.target;
+    const srcImg = photoClique.src;
+    const imageAlt = photoClique.alt;
+    // console.log(srcImg);
+
+    let filter = medias.filter(media => media.image === imageAlt)
+      let positionCible = filter[0];
+      let currentPosition = medias.indexOf(positionCible);
+      console.log(currentPosition);
+
+      //  Apparition de l'element cliqué
+      let lightbox = new Lightbox(medias, currentPosition);
+      lightbox.showTest(currentPosition, srcImg)
+  }
   
-  
-  //----------------------------------------
+  // ###### APPARITION DE LA LIGHTBOX ###### //
+  var toutLesMedias = document.querySelectorAll('.articleMedia');
+  toutLesMedias.forEach(container => {
+    // console.log(container);
+    var containerImg = container.firstChild;
+    // console.log(containerImg);
+    containerImg.addEventListener('click',apparitionElementClique)
+  })
+  //////////////////////
+
 }
 
-// };
-
 // Gestion de l'affichage de la LIGHTBOX
+// ________________________
+
 async function displayLightbox(medias) {
   
   // ###### FONCTIONS ASSOCIE A LA LIGHTBOX ###### //
@@ -276,7 +320,7 @@ async function displayLightbox(medias) {
         console.log(currentPosition);
   
         let lightbox = new Lightbox(medias, currentPosition);
-        lightbox.nextImageTest(currentPosition);
+        lightbox.nextImage(currentPosition);
       }
       // Recuperation de la position de la video en cours
       else if (imageAlt === "") {
@@ -295,7 +339,7 @@ async function displayLightbox(medias) {
   
         // Construction de l'element suivant
         let lightbox = new Lightbox(medias, currentPosition);
-        lightbox.nextImageTest(currentPosition);
+        lightbox.nextImage(currentPosition);
       }
   
       // Construction de l'element suivant
@@ -329,7 +373,7 @@ async function displayLightbox(medias) {
         console.log(currentPosition);
   
         let lightbox = new Lightbox(medias, currentPosition);
-        lightbox.beforeImageTest(currentPosition);
+        lightbox.beforeImage(currentPosition);
       }
       // Recuperation de la position de la video en cours
       else if (imageAlt === "") {
@@ -348,7 +392,7 @@ async function displayLightbox(medias) {
   
         // Construction de l'element suivant
         let lightbox = new Lightbox(medias, currentPosition);
-        lightbox.beforeImageTest(currentPosition);
+        lightbox.beforeImage(currentPosition);
       }
   
       // Construction de l'element suivant
@@ -392,7 +436,7 @@ async function displayLightbox(medias) {
             // console.log(currentPosition);
   
             let lightbox = new Lightbox(medias, currentPosition);
-            lightbox.nextImageTest(currentPosition);
+            lightbox.nextImage(currentPosition);
           }
           // Recuperation de la position de la video en cours
           else if (imageAlt === "") {
@@ -411,7 +455,7 @@ async function displayLightbox(medias) {
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);
-            lightbox.nextImageTest(currentPosition);
+            lightbox.nextImage(currentPosition);
           }
   
           // Construction de l'element suivant
@@ -446,7 +490,7 @@ async function displayLightbox(medias) {
             console.log(currentPosition);
   
             let lightbox = new Lightbox(medias, currentPosition);
-            lightbox.beforeImageTest(currentPosition);
+            lightbox.beforeImage(currentPosition);
           }
           // Recuperation de la position de la video en cours
           else if (imageAlt === "") {
@@ -465,7 +509,7 @@ async function displayLightbox(medias) {
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);
-            lightbox.beforeImageTest(currentPosition);
+            lightbox.beforeImage(currentPosition);
           }
   
           // Construction de l'element suivant
@@ -754,6 +798,8 @@ async function displayLightbox(medias) {
 }
 
 // Fonction d'initialisation
+// ________________________
+
 async function init() {
   // Récupère les datas des photographes
   const photographerModel = new PhotographerModel();

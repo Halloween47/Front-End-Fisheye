@@ -1,4 +1,7 @@
+// #############################################################
 // Modele pour la manipulation des données " Photographes "
+// #############################################################
+
 export class PhotographerModel {
   async getListePhotographers() {
     const listePhotographers = await fetch("data/photographers.json");
@@ -10,7 +13,7 @@ export class PhotographerModel {
   async getListeMedias() {
     const listeMedias = await fetch("data/photographers.json");
     const listeMediasJson = await listeMedias.json();
-    // console.log(listePhotographersJson.photographers)
+    
     return listeMediasJson.media;
   }
   
@@ -19,9 +22,6 @@ export class PhotographerModel {
     const listePhotographersJson = await listePhotographers.json();
     const photographers = listePhotographersJson.photographers;
     
-    // let name = photographers.find(function(photographer) {
-    //   return photographer.name === idPhotographer;
-    // })
     photographers.find(function(photographer) {
       return photographer.name === idPhotographer;
     })
@@ -59,17 +59,11 @@ export class PhotographerModel {
     const listePhotographers = await fetch('data/photographers.json');
     const listePhotographersJson = await listePhotographers.json();
     const medias = listePhotographersJson.media;
-
-    // let listeMediaPhotographer = medias.filter( 
-    //   media => media.title === donneeCible
-    // )
+    
     let listeMediaPhotographer = medias.find(function(media) {
       return media.title === donneeCible;
     })
     return listeMediaPhotographer
-
-
-    // return listeMediaPhotographer;
 
   }
   

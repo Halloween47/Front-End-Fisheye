@@ -1,4 +1,7 @@
-// Factory pour les données " MEDIAS "
+// #############################################################
+// Factory dédié à la mise en forme des données MEDIAS
+// #############################################################
+
 // eslint-disable-next-line no-unused-vars
 function mediaFactory(data) {
     const {id, photographerId, title, image, video, likes } = data;
@@ -26,6 +29,8 @@ function mediaFactory(data) {
         const img = document.createElement( 'img' );
         
         // Cas pour les VIDEOS
+        // ________________________
+
         if (checkVideo()) {
             const video = document.createElement('video');
             video.setAttribute('controls', "");
@@ -45,7 +50,10 @@ function mediaFactory(data) {
             video.appendChild(source);
             
         } 
+        
         // Cas pour les IMAGES
+        // ________________________
+
         else {
             img.setAttribute("src",photos);
             img.setAttribute("alt", images);
@@ -56,12 +64,15 @@ function mediaFactory(data) {
         }
         
         // TITRE de l'image
+        // ________________________
+
         var titreImage = document.createElement('p');
         titreImage.setAttribute('class', 'titre-image');
         titreImage.textContent = titleMedia;
         
-        
         // Gestion des LIKES
+        // ________________________
+
         const zoneIconLikes = document.createElement('div');
         const zoneNbLikes = document.createElement('div');
         const iconLike = document.createElement('i');
@@ -69,9 +80,9 @@ function mediaFactory(data) {
         
         zoneIconLikes.setAttribute('class', 'zoneIconLikes');
         iconLike.setAttribute('class', 'fa-solid fa-heart fa-xl');
+        iconLike.setAttribute('aria-label', 'likes');
         nombreLikes.setAttribute('class', 'nombreLikes');
         zoneNbLikes.setAttribute('class', 'zoneNbLikes');
-        // nombreLikes.textContent = '12';
         nombreLikes.textContent = likePhoto;
         
         // console.log(likePhoto);

@@ -32,6 +32,7 @@ h1 { margin: 0; padding: 0;}
     line-height: 31px;
     
     color: #901C1C;
+    margin: 0;
 }
 
 .photograph-header p:nth-child(3) {
@@ -48,13 +49,22 @@ h1 { margin: 0; padding: 0;}
     width: 300px; height: 300px;
     background-color: red;
     border-radius: 50%;
+    overflow: hidden;
 }
 
 .rounded-img img {
-    width: 100%;
+    /* width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 50%; */
+
+    width: 100%;
+    transform: scale(1.5);
+}
+
+.logo {
+    height: 50px;
+    margin: 40px 0px 40px 100px;
 }
 
 .photograph-filter {
@@ -91,6 +101,13 @@ h1 { margin: 0; padding: 0;}
     
     border-bottom-color: #fff;
     border-radius: 50%;
+
+    padding: 20px 0px;
+}
+
+select option {
+    border: 2px black solid;
+    padding: 20px 0px;
 }
 
 .photograph-media {
@@ -207,6 +224,11 @@ h1 { margin: 0; padding: 0;}
     cursor: pointer;
 }
 
+.contact_button:hover {
+    
+    background-color: #D3573C;
+}
+
 #contact_modal {
     display: none;
     
@@ -242,12 +264,27 @@ h1 { margin: 0; padding: 0;}
 }
 
 .modal header {
+    display: flex;
     justify-content: space-between;
     width: 100%;
+    position: relative;
+}
+
+#titleForm {
+    font-size: 2.5rem;
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 83px;
+    margin: 0px 0px 20px 0px;
 }
 
 .modal header img {
     cursor: pointer;
+    position: absolute;
+    right: 0;
 }
 
 .modal header h1 {
@@ -267,6 +304,11 @@ form {
 form label {
     color: #312E2E;
     font-size: 26px;
+
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 34px;
 }
 
 form div {
@@ -292,6 +334,10 @@ form input:focus {
     /* width: auto; */
     height: 100%;
     padding: 10px;
+}
+
+textarea {
+    height: 150px;
 }
 
 /*---------------------------------------------------*/
@@ -381,8 +427,55 @@ form input:focus {
 
     position: relative;
 }
-#lightbox-test-container img {
+/* #lightbox-test-container img {
     width: auto; height: auto;
+} */
+.lightbox-zone-element  {
+/* background-color: black; */
+width: 700px; 
+height: 700px; 
+/* height: auto;  */
+overflow: hidden;
+/* width: 100%; */
+/* height: 100%; */
+display: flex;
+justify-content: center;
+align-self: center;
+
+flex-direction: column;
+}
+
+.zone-img {
+    /* background-color: blue; */
+    width: 100%; 
+    /* height: 90%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+#lightboxImg {
+    width: 100%; height: auto;
+}
+#lightboxTitre {
+    /* background: red; */
+    /* margin: 0; padding: 0; */
+    margin: 0px;
+    padding-top: 10px;
+
+    font-size: 24px;
+    padding-right: 10px;
+    font-family: 'DM Sans';
+    font-weight: 500;
+    color: #901C1C;
+}
+.testImg {
+    background-color: violet;
+}
+#testTitre {
+    background-color: #fff; 
+    height: 10%;
+    margin: 0;
 }
 #lightbox-test-arrowLeft, #lightbox-test-arrowRight {
     /* background-color:blue; */
