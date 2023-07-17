@@ -83,7 +83,7 @@ class Lightbox {
 
     if (newPosition >= mediasLength) {
       this.showTest(0);
-      console.log('trop long');
+      // console.log('trop long');
     } else {
       this.showTest(newPosition)
     }
@@ -91,7 +91,7 @@ class Lightbox {
   }
 
   beforeImage(currentPosition) {
-    console.log('before');
+    // console.log('before');
     
     let medias = this.listElement;
     let mediasLength = medias.length;

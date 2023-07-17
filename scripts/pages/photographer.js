@@ -51,7 +51,7 @@ async function displayData(photographers, medias) {
     let zoneNbLike = this;
     let zoneNombre = zoneNbLike.firstChild;
     let nombreLikesContent = zoneNombre.textContent;
-    console.log(nombreLikesContent);
+    // console.log(nombreLikesContent);
     let nombreLikesConvert = parseInt(nombreLikesContent);
     let isLiked = nombreLikesConvert + 1;
     let newNumberToString = isLiked.toString();
@@ -63,27 +63,27 @@ async function displayData(photographers, medias) {
     
     // Total LIKES
     const totalLikes = [];
-    console.log(zoneIconLikes);
+    // console.log(zoneIconLikes);
     var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
     
     zoneNbLikes.forEach(like => {
       const nombreLike = like.firstChild;
       const nombreLikeImage = nombreLike.textContent;
       const nombreLikeImageConvert = parseInt(nombreLikeImage);
-      console.log(nombreLikeImageConvert);
+      // console.log(nombreLikeImageConvert);
       totalLikes.push(nombreLikeImageConvert)
     })
-    console.log(totalLikes);
+    // console.log(totalLikes);
     let nbTotlaLikes = 0;
     for (let index = 0; index < totalLikes.length; index++) {
       // const element = totalLikes[index];
       nbTotlaLikes += totalLikes[index]
     }
-    console.log(nbTotlaLikes);
+    // console.log(nbTotlaLikes);
     let zoneTotalLikes = document.querySelector('.totalLikes');
     zoneTotalLikes.textContent = nbTotlaLikes;
   }
-  var zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
+  // var zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
   var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
   
   zoneNbLikes.forEach(function(zoneLike) {
@@ -220,37 +220,38 @@ async function displayData(photographers, medias) {
       
       
     }
+////////////////////////////
+function apparitionElementClique(e) {
+  const photoClique = e.target;
+  const srcImg = photoClique.src;
+  const imageAlt = photoClique.alt;
+  // console.log(srcImg);
+
+  let filter = medias.filter(media => media.image === imageAlt)
+    let positionCible = filter[0];
+    let currentPosition = medias.indexOf(positionCible);
+    // console.log(currentPosition);
+
+    //  Apparition de l'element cliqué
+    let lightbox = new Lightbox(medias, currentPosition);
+    lightbox.showTest(currentPosition, srcImg)
+}
+
+let toutLesMedias = document.querySelectorAll('.articleMedia');
+toutLesMedias.forEach(container => {
+  // console.log(container);
+  var containerImg = container.firstChild;
+  // console.log(containerImg);
+  containerImg.addEventListener('click',apparitionElementClique)
+})
+////////////////////////////
+
   }
   
   const filterPopularite = document.getElementById('photograph-filter');
   filterPopularite.addEventListener('change', filterData);
 
   //////////////////////
-   // ###### FONCTIONS ASSOCIE A LA LIGHTBOX ###### //
-   function apparitionElementClique(e) {
-    const photoClique = e.target;
-    const srcImg = photoClique.src;
-    const imageAlt = photoClique.alt;
-    // console.log(srcImg);
-
-    let filter = medias.filter(media => media.image === imageAlt)
-      let positionCible = filter[0];
-      let currentPosition = medias.indexOf(positionCible);
-      console.log(currentPosition);
-
-      //  Apparition de l'element cliqué
-      let lightbox = new Lightbox(medias, currentPosition);
-      lightbox.showTest(currentPosition, srcImg)
-  }
-  
-  // ###### APPARITION DE LA LIGHTBOX ###### //
-  var toutLesMedias = document.querySelectorAll('.articleMedia');
-  toutLesMedias.forEach(container => {
-    // console.log(container);
-    var containerImg = container.firstChild;
-    // console.log(containerImg);
-    containerImg.addEventListener('click',apparitionElementClique)
-  })
   //////////////////////
 
 }
@@ -270,7 +271,7 @@ async function displayLightbox(medias) {
     let filter = medias.filter(media => media.image === imageAlt)
       let positionCible = filter[0];
       let currentPosition = medias.indexOf(positionCible);
-      console.log(currentPosition);
+      // console.log(currentPosition);
 
       //  Apparition de l'element cliqué
       let lightbox = new Lightbox(medias, currentPosition);
@@ -278,7 +279,7 @@ async function displayLightbox(medias) {
   }
   
   // ###### APPARITION DE LA LIGHTBOX ###### //
-  var toutLesMedias = document.querySelectorAll('.articleMedia');
+  let toutLesMedias = document.querySelectorAll('.articleMedia');
   toutLesMedias.forEach(container => {
     // console.log(container);
     var containerImg = container.firstChild;
@@ -317,7 +318,7 @@ async function displayLightbox(medias) {
         let filter = medias.filter(media => media.image === imageAlt)
         let positionCible = filter[0];
         let currentPosition = medias.indexOf(positionCible);
-        console.log(currentPosition);
+        // console.log(currentPosition);
   
         let lightbox = new Lightbox(medias, currentPosition);
         lightbox.nextImage(currentPosition);
@@ -406,10 +407,10 @@ async function displayLightbox(medias) {
     const sectionLightbox = document.querySelector('#lightbox-test');
 
       const lightboxAriaHidden = sectionLightbox.getAttribute('aria-hidden');
-      console.log(lightboxAriaHidden);
+      // console.log(lightboxAriaHidden);
   
       if (lightboxAriaHidden != "true") {
-        console.log('toutéfalseee');
+        // console.log('toutéfalseee');
         // ###### TOUCHE DE DROITE DE LA LIGHTBOX ###### //
         if (event.keyCode === 39) {
           // La flèche de droite a été pressée
@@ -451,7 +452,7 @@ async function displayLightbox(medias) {
             let positionCible = filterVideo[0];
             // console.log(positionCible);
             let currentPosition = medias.indexOf(positionCible);
-            console.log(currentPosition);
+            // console.log(currentPosition);
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);
@@ -467,7 +468,7 @@ async function displayLightbox(medias) {
         // ###### TOUCHE DE GAUCHE DE LA LIGHTBOX ###### //
         if (event.keyCode === 37) {
           // La flèche de gauche a été pressée
-          console.log("Flèche de gauche pressée !");
+          // console.log("Flèche de gauche pressée !");
   
   
           // Recuperation de la position de l'image en cours
@@ -480,14 +481,14 @@ async function displayLightbox(medias) {
   
           // Recuperation de la position de la image en cours
           if (imageAlt) {
-            console.log('Recuperation position image OK');
+            // console.log('Recuperation position image OK');
   
             const lightboxImgEnCours = document.querySelector('#lightboxImg');
             const imageAlt = lightboxImgEnCours.alt;
             let filter = medias.filter(media => media.image === imageAlt)
             let positionCible = filter[0];
             let currentPosition = medias.indexOf(positionCible);
-            console.log(currentPosition);
+            // console.log(currentPosition);
   
             let lightbox = new Lightbox(medias, currentPosition);
             lightbox.beforeImage(currentPosition);
@@ -505,7 +506,7 @@ async function displayLightbox(medias) {
             let positionCible = filterVideo[0];
             // console.log(positionCible);
             let currentPosition = medias.indexOf(positionCible);
-            console.log(currentPosition);
+            // console.log(currentPosition);
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);

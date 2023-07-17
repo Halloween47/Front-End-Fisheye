@@ -50,6 +50,9 @@ h1 { margin: 0; padding: 0;}
     background-color: red;
     border-radius: 50%;
     overflow: hidden;
+
+    display: flex;
+    align-items: center;
 }
 
 .rounded-img img {
