@@ -257,6 +257,7 @@ select option {
     background-color: #DB8876;
     width: 30vw;
     height: auto;
+    /* height: 80vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -279,8 +280,8 @@ select option {
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 64px;
-    line-height: 83px;
+    /* font-size: 64px;
+    line-height: 83px; */
     margin: 0px 0px 20px 0px;
 }
 
@@ -300,6 +301,7 @@ select option {
 form {
     display: flex;
     width: 100%;
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -311,7 +313,6 @@ form label {
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
-    font-size: 34px;
 }
 
 form div {
