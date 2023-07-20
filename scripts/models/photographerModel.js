@@ -21,10 +21,8 @@ export class PhotographerModel {
     const listePhotographersJson = await listePhotographers.json();
     const photographers = listePhotographersJson.photographers;
     
-    photographers.find(function(photographer) {
-      return photographer.name === idPhotographer;
-    })
     
+    // Ici le find sert essentiellement à recuperer les infos du photographer en fonction de l ID passé en parametre
     let photographerID = photographers.find(function(photographer) {
       return photographer.id === idPhotographer;
     })
