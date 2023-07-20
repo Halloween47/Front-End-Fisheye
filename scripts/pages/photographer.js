@@ -16,7 +16,7 @@ async function displayData(photographers, medias) {
   // ________________________
 
   const photographerSection = document.querySelector(".photograph-header");
-  var photographerSectionFirstChild = photographerSection.firstChild;
+  let photographerSectionFirstChild = photographerSection.firstChild;
   // eslint-disable-next-line no-undef
   const photographerModel = photographerFactory(photographers);
   const photographersCardDOM = photographerModel.getPhotographersCardDOM();
@@ -62,7 +62,7 @@ async function displayData(photographers, medias) {
     
     // Total LIKES
     const totalLikes = [];
-    var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
+    let zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
     
     zoneNbLikes.forEach(like => {
       const nombreLike = like.firstChild;
@@ -78,8 +78,8 @@ async function displayData(photographers, medias) {
     let zoneTotalLikes = document.querySelector('.totalLikes');
     zoneTotalLikes.textContent = nbTotlaLikes;
   }
-  // var zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
-  var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
+  // let zoneIconLikes = document.querySelectorAll(".zoneIconLikes");
+  let zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
   
   zoneNbLikes.forEach(function(zoneLike) {
     zoneLike.addEventListener("click", handleClick);
@@ -194,13 +194,13 @@ async function displayData(photographers, medias) {
     
     let toutLesMedias = document.querySelectorAll('.articleMedia');
     toutLesMedias.forEach(container => {
-      var containerImg = container.firstChild;
+      let containerImg = container.firstChild;
       containerImg.addEventListener('click',apparitionElementClique)
     })
     
     
     ////////////////////////////
-    var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
+    let zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
   
   zoneNbLikes.forEach(function(zoneLike) {
     zoneLike.addEventListener("click", handleClick);
@@ -240,7 +240,7 @@ async function displayLightbox(medias) {
   // ###### APPARITION DE LA LIGHTBOX ###### //
   let toutLesMedias = document.querySelectorAll('.articleMedia');
   toutLesMedias.forEach(container => {
-    var containerImg = container.firstChild;
+    let containerImg = container.firstChild;
     containerImg.addEventListener('click',apparitionElementClique)
   })
   

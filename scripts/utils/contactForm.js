@@ -85,10 +85,10 @@ formulaireIntegral.addEventListener('submit', function(event) {
     // Récupérez les valeurs des champs de saisie
     // ________________________
     
-    var prenom = document.getElementById('prenom').value;
-    var nom = document.getElementById('nom').value;
-    var email = document.getElementById('email').value;
-    var messageForm = document.getElementById('messageForm').value;
+    let prenom = document.getElementById('prenom').value;
+    let nom = document.getElementById('nom').value;
+    let email = document.getElementById('email').value;
+    let messageForm = document.getElementById('messageForm').value;
     
     // Affichez les valeurs dans la console
     // ________________________

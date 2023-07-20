@@ -65,7 +65,7 @@ function mediaFactory(data) {
         // TITRE de l'image
         // ________________________
 
-        var titreImage = document.createElement('p');
+        let titreImage = document.createElement('p');
         titreImage.setAttribute('class', 'titre-image');
         titreImage.textContent = titleMedia;
         
