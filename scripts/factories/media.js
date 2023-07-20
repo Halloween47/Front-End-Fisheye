@@ -33,7 +33,6 @@ function mediaFactory(data) {
 
         if (checkVideo()) {
             const video = document.createElement('video');
-            video.setAttribute('controls', "");
             containerImg.appendChild(video);
             
             const videoError = document.createElement('p');

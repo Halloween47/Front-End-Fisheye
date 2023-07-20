@@ -31,13 +31,11 @@ class Lightbox {
     lightbox.setAttribute('aria-hidden', 'false');
     
     let tableau = medias[currentPosition];
-    // console.log(tableau);
     
     let elementImage = 'image';
     let elementVideo = 'video';
     
     if (elementImage in tableau) {
-      // console.log("Image est presente");
       const lightboxImgEnCours = document.querySelector('#lightboxImg');
       lightboxImgEnCours.style.display = "block";
       const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
@@ -58,19 +56,16 @@ class Lightbox {
       lightboxImgEnCours.style.display = "none";
       
       const video = medias[currentPosition].video;
-      // console.log(tableau.indexof(video));
       const videoSrc = 'assets/images/' + video;
       lightboxImgEnCours.src = "";
       lightboxImgEnCours.alt = "";
       lightboxVideoEnCours.src = videoSrc;
       lightboxVideoEnCours.alt = video;
-      // console.log(lightboxVideoEnCours.alt);
       
     }
 
     // Affichage titre image
     let elementTitre = document.querySelector('#lightboxTitre');
-    // elementTitre.textContent = "test";
     elementTitre.textContent = tableau.title;
     
   }

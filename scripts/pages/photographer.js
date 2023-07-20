@@ -273,12 +273,10 @@ async function displayLightbox(medias) {
     const photoClique = e.target;
     const srcImg = photoClique.src;
     const imageAlt = photoClique.alt;
-    // console.log(srcImg);
 
     let filter = medias.filter(media => media.image === imageAlt)
       let positionCible = filter[0];
       let currentPosition = medias.indexOf(positionCible);
-      // console.log(currentPosition);
 
       //  Apparition de l'element cliqué
       let lightbox = new Lightbox(medias, currentPosition);
