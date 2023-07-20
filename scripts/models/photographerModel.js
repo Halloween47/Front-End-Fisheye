@@ -6,7 +6,6 @@ export class PhotographerModel {
   async getListePhotographers() {
     const listePhotographers = await fetch("data/photographers.json");
     const listePhotographersJson = await listePhotographers.json();
-    // console.log(listePhotographersJson.photographers)
     return listePhotographersJson.photographers;
   }
   

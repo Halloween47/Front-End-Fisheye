@@ -51,7 +51,6 @@ async function displayData(photographers, medias) {
     let zoneNbLike = this;
     let zoneNombre = zoneNbLike.firstChild;
     let nombreLikesContent = zoneNombre.textContent;
-    // console.log(nombreLikesContent);
     let nombreLikesConvert = parseInt(nombreLikesContent);
     let isLiked = nombreLikesConvert + 1;
     let newNumberToString = isLiked.toString();
@@ -63,23 +62,19 @@ async function displayData(photographers, medias) {
     
     // Total LIKES
     const totalLikes = [];
-    // console.log(zoneIconLikes);
     var zoneNbLikes = document.querySelectorAll(".zoneNbLikes");
     
     zoneNbLikes.forEach(like => {
       const nombreLike = like.firstChild;
       const nombreLikeImage = nombreLike.textContent;
       const nombreLikeImageConvert = parseInt(nombreLikeImage);
-      // console.log(nombreLikeImageConvert);
       totalLikes.push(nombreLikeImageConvert)
     })
-    // console.log(totalLikes);
     let nbTotlaLikes = 0;
     for (let index = 0; index < totalLikes.length; index++) {
       // const element = totalLikes[index];
       nbTotlaLikes += totalLikes[index]
     }
-    // console.log(nbTotlaLikes);
     let zoneTotalLikes = document.querySelector('.totalLikes');
     zoneTotalLikes.textContent = nbTotlaLikes;
   }
@@ -94,21 +89,17 @@ async function displayData(photographers, medias) {
   // ________________________
 
   const totalLikes = [];
-  // console.log(zoneIconLikes);
   zoneNbLikes.forEach(like => {
     const nombreLike = like.firstChild;
     const nombreLikeImage = nombreLike.textContent;
     const nombreLikeImageConvert = parseInt(nombreLikeImage);
-    // console.log(nombreLikeImageConvert);
     totalLikes.push(nombreLikeImageConvert)
   })
-  // console.log(totalLikes);
   let nbTotlaLikes = 0;
   for (let index = 0; index < totalLikes.length; index++) {
     // const element = totalLikes[index];
     nbTotlaLikes += totalLikes[index]
   }
-  // console.log(nbTotlaLikes);
   let zoneTotalLikes = document.querySelector('.totalLikes');
   zoneTotalLikes.textContent = nbTotlaLikes;
   
@@ -123,15 +114,12 @@ async function displayData(photographers, medias) {
       const mediasSection = document.querySelector(".photograph-media");
       mediasSection.innerHTML = '';
       
-      console.log('DATE !!!');
       
-      console.log(medias);
       
       medias.sort((a, b) =>
       new Date(a.date) - new Date(b.date)
       );
       
-      console.log(medias);
       
       
       medias.forEach((media) => {
@@ -144,20 +132,16 @@ async function displayData(photographers, medias) {
   ////////////////////////////////////////////////////////
       ///////
     } else if (filterValue === "titre") {
-      console.log('TITRE !!! !!!');
       
       const mediasSection = document.querySelector(".photograph-media");
       mediasSection.innerHTML = '';
       
-      console.log('DATE !!!');
       
-      console.log(medias);
       
       medias.sort((a, b) =>
       a.title.localeCompare(b.title)
       );
       
-      console.log(medias);
       
       
       medias.forEach((media) => {
@@ -169,37 +153,12 @@ async function displayData(photographers, medias) {
       
     }
     else if (filterValue === 'popularite') {
-      console.log('POPULARITE !!! !!!');
-      // // Récupérer le conteneur des articles
-      // const mediasSection = document.querySelector(".photograph-media");
-      // mediasSection.innerHTML = '';
       
-      // // Récupérer tous les articles
-      // const articles = Array.from(document.querySelectorAll('.articleMedia'));
-      // // console.log(articles);
-      // // articles.sort();
-      // // console.log(articles);
-      
-      // // Trier les articles en fonction du nombre de likes
-      // articles.sort((a, b) => {
-      //   // articles.sort(function(a, b) {
-      //   const likesA = parseInt(a.querySelector('.nombreLikes').textContent);
-      //   const likesB = parseInt(b.querySelector('.nombreLikes').textContent);
-      //   return likesB - likesA; // Tri décroissant
-      // });
-      
-      // // Réorganiser les articles dans le conteneur
-      // articles.forEach(article => {
-      //   mediasSection.appendChild(article);
-      // });
-      
-      ///////////////////////////////////////////////////////
       
       const mediasSection = document.querySelector(".photograph-media");
       mediasSection.innerHTML = '';
       
       
-      console.log(medias);
       
       medias.sort((a, b) => {
         const likesA = a.likes;
@@ -207,7 +166,6 @@ async function displayData(photographers, medias) {
         return likesB - likesA; // Tri décroissant
       });
       
-      console.log(medias);
       
       
       medias.forEach((media) => {
@@ -224,12 +182,10 @@ async function displayData(photographers, medias) {
       const photoClique = e.target;
       const srcImg = photoClique.src;
       const imageAlt = photoClique.alt;
-      // console.log(srcImg);
       
       let filter = medias.filter(media => media.image === imageAlt)
       let positionCible = filter[0];
       let currentPosition = medias.indexOf(positionCible);
-      // console.log(currentPosition);
       
       //  Apparition de l'element cliqué
       let lightbox = new Lightbox(medias, currentPosition);
@@ -238,9 +194,7 @@ async function displayData(photographers, medias) {
     
     let toutLesMedias = document.querySelectorAll('.articleMedia');
     toutLesMedias.forEach(container => {
-      // console.log(container);
       var containerImg = container.firstChild;
-      // console.log(containerImg);
       containerImg.addEventListener('click',apparitionElementClique)
     })
     
@@ -286,9 +240,7 @@ async function displayLightbox(medias) {
   // ###### APPARITION DE LA LIGHTBOX ###### //
   let toutLesMedias = document.querySelectorAll('.articleMedia');
   toutLesMedias.forEach(container => {
-    // console.log(container);
     var containerImg = container.firstChild;
-    // console.log(containerImg);
     containerImg.addEventListener('click',apparitionElementClique)
   })
   
@@ -312,36 +264,28 @@ async function displayLightbox(medias) {
       // let filter = medias.filter(media => media.image === imageAlt)
       // let positionCible = filter[0];
       // let currentPosition = medias.indexOf(positionCible);
-      // console.log(currentPosition);
   
       // Recuperation de la position de la image en cours
       if (imageAlt) {
-        // console.log('Recuperation position image OK');
   
         const lightboxImgEnCours = document.querySelector('#lightboxImg');
         const imageAlt = lightboxImgEnCours.alt;
         let filter = medias.filter(media => media.image === imageAlt)
         let positionCible = filter[0];
         let currentPosition = medias.indexOf(positionCible);
-        // console.log(currentPosition);
   
         let lightbox = new Lightbox(medias, currentPosition);
         lightbox.nextImage(currentPosition);
       }
       // Recuperation de la position de la video en cours
       else if (imageAlt === "") {
-        console.log('Recuperation position video OK');
   
         const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-        // console.log(lightboxVideoEnCours);
+        // .log(lightboxVideoEnCours);
         const videoAlt = lightboxVideoEnCours.alt;
-        // console.log(videoAlt);
         let filterVideo = medias.filter(media => media.video === videoAlt);
-        // console.log(filterVideo);
         let positionCible = filterVideo[0];
-        // console.log(positionCible);
         let currentPosition = medias.indexOf(positionCible);
-        console.log(currentPosition);
   
         // Construction de l'element suivant
         let lightbox = new Lightbox(medias, currentPosition);
@@ -362,39 +306,27 @@ async function displayLightbox(medias) {
       // Recuperation de la position de l'image en cours
       const lightboxImgEnCours = document.querySelector('#lightboxImg');
       const imageAlt = lightboxImgEnCours.alt;
-      // let filter = medias.filter(media => media.image === imageAlt)
-      // let positionCible = filter[0];
-      // let currentPosition = medias.indexOf(positionCible);
-      // console.log(currentPosition);
   
       // Recuperation de la position de la image en cours
       if (imageAlt) {
-        console.log('Recuperation position image OK');
   
         const lightboxImgEnCours = document.querySelector('#lightboxImg');
         const imageAlt = lightboxImgEnCours.alt;
         let filter = medias.filter(media => media.image === imageAlt)
         let positionCible = filter[0];
         let currentPosition = medias.indexOf(positionCible);
-        console.log(currentPosition);
   
         let lightbox = new Lightbox(medias, currentPosition);
         lightbox.beforeImage(currentPosition);
       }
       // Recuperation de la position de la video en cours
       else if (imageAlt === "") {
-        console.log('Recuperation position video OK');
   
         const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-        // console.log(lightboxVideoEnCours);
         const videoAlt = lightboxVideoEnCours.alt;
-        // console.log(videoAlt);
         let filterVideo = medias.filter(media => media.video === videoAlt);
-        // console.log(filterVideo);
         let positionCible = filterVideo[0];
-        // console.log(positionCible);
         let currentPosition = medias.indexOf(positionCible);
-        console.log(currentPosition);
   
         // Construction de l'element suivant
         let lightbox = new Lightbox(medias, currentPosition);
@@ -412,14 +344,11 @@ async function displayLightbox(medias) {
     const sectionLightbox = document.querySelector('#lightbox-test');
 
       const lightboxAriaHidden = sectionLightbox.getAttribute('aria-hidden');
-      // console.log(lightboxAriaHidden);
   
       if (lightboxAriaHidden != "true") {
-        // console.log('toutéfalseee');
         // ###### TOUCHE DE DROITE DE LA LIGHTBOX ###### //
         if (event.keyCode === 39) {
           // La flèche de droite a été pressée
-          // console.log("Flèche de droite pressée !");
   
   
           // Recuperation de la position de l'image en cours
@@ -428,36 +357,27 @@ async function displayLightbox(medias) {
           // let filter = medias.filter(media => media.image === imageAlt)
           // let positionCible = filter[0];
           // let currentPosition = medias.indexOf(positionCible);
-          // console.log(currentPosition);
   
           // Recuperation de la position de la image en cours
           if (imageAlt) {
-            // console.log('Recuperation position image OK');
   
             const lightboxImgEnCours = document.querySelector('#lightboxImg');
             const imageAlt = lightboxImgEnCours.alt;
             let filter = medias.filter(media => media.image === imageAlt)
             let positionCible = filter[0];
             let currentPosition = medias.indexOf(positionCible);
-            // console.log(currentPosition);
   
             let lightbox = new Lightbox(medias, currentPosition);
             lightbox.nextImage(currentPosition);
           }
           // Recuperation de la position de la video en cours
           else if (imageAlt === "") {
-            console.log('Recuperation position video OK');
   
             const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-            // console.log(lightboxVideoEnCours);
             const videoAlt = lightboxVideoEnCours.alt;
-            // console.log(videoAlt);
             let filterVideo = medias.filter(media => media.video === videoAlt);
-            // console.log(filterVideo);
             let positionCible = filterVideo[0];
-            // console.log(positionCible);
             let currentPosition = medias.indexOf(positionCible);
-            // console.log(currentPosition);
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);
@@ -473,7 +393,6 @@ async function displayLightbox(medias) {
         // ###### TOUCHE DE GAUCHE DE LA LIGHTBOX ###### //
         if (event.keyCode === 37) {
           // La flèche de gauche a été pressée
-          // console.log("Flèche de gauche pressée !");
   
   
           // Recuperation de la position de l'image en cours
@@ -482,36 +401,27 @@ async function displayLightbox(medias) {
           // let filter = medias.filter(media => media.image === imageAlt)
           // let positionCible = filter[0];
           // let currentPosition = medias.indexOf(positionCible);
-          // console.log(currentPosition);
   
           // Recuperation de la position de la image en cours
           if (imageAlt) {
-            // console.log('Recuperation position image OK');
   
             const lightboxImgEnCours = document.querySelector('#lightboxImg');
             const imageAlt = lightboxImgEnCours.alt;
             let filter = medias.filter(media => media.image === imageAlt)
             let positionCible = filter[0];
             let currentPosition = medias.indexOf(positionCible);
-            // console.log(currentPosition);
   
             let lightbox = new Lightbox(medias, currentPosition);
             lightbox.beforeImage(currentPosition);
           }
           // Recuperation de la position de la video en cours
           else if (imageAlt === "") {
-            console.log('Recuperation position video OK');
   
             const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-            // console.log(lightboxVideoEnCours);
             const videoAlt = lightboxVideoEnCours.alt;
-            // console.log(videoAlt);
             let filterVideo = medias.filter(media => media.video === videoAlt);
-            // console.log(filterVideo);
             let positionCible = filterVideo[0];
-            // console.log(positionCible);
             let currentPosition = medias.indexOf(positionCible);
-            // console.log(currentPosition);
   
             // Construction de l'element suivant
             let lightbox = new Lightbox(medias, currentPosition);
@@ -527,279 +437,12 @@ async function displayLightbox(medias) {
         // ###### TOUCHE ECHAP DE LA LIGHTBOX ###### //
         if (event.keyCode === 27 || event.keyCode === 32) {
           // La touche "Échap" a été pressée
-          console.log("Touche Échap pressée !");
           const lightboxTest = document.querySelector('#lightbox-test');
           lightboxTest.style.display = 'none';
         }
       } 
     });
     /////////////////////////////////
-  // const sectionMedia = document.querySelectorAll('.photograph-media');
-  // const sectionLightbox = document.querySelector('#lightbox-test');
-  
-  // // eslint-disable-next-line no-unused-vars
-  // sectionMedia.forEach(article => {
-  //   let containerImg = document.querySelector('.container-img');
-  //   // Apparition de l'image cliqué
-  //   containerImg.addEventListener('click', (e) => {
-  //     const photoClique = e.target;
-  //     const srcImg = photoClique.src;
-  //     const imageAlt = photoClique.alt;
-  //     // console.log(srcImg);
-  
-  //     // CONNAISSANCE DE LA POSITION EN COURS
-  //     let filter = medias.filter(media => media.image === imageAlt)
-  //     let positionCible = filter[0];
-  //     let currentPosition = medias.indexOf(positionCible);
-  
-  //     // Apparition de l'element cliqué
-  //     let lightbox = new Lightbox(medias, currentPosition);
-  //     lightbox.showTest(currentPosition, srcImg);
-  
-  //   });
-  
-  //   // Event sur fleche de droite
-  //   const lightboxArrowRight = document.querySelector('.fa-chevron-right');    
-  //   // const lightboxArrowRight = document.querySelector('#lightbox-test-arrowRight');
-  //   lightboxArrowRight.addEventListener("click", () => {
-  
-  //     // Recuperation de la position de l'image en cours
-  //     const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //     const imageAlt = lightboxImgEnCours.alt;
-  //     // let filter = medias.filter(media => media.image === imageAlt)
-  //     // let positionCible = filter[0];
-  //     // let currentPosition = medias.indexOf(positionCible);
-  //     // console.log(currentPosition);
-  
-  //     // Recuperation de la position de la image en cours
-  //     if (imageAlt) {
-  //       // console.log('Recuperation position image OK');
-  
-  //       const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //       const imageAlt = lightboxImgEnCours.alt;
-  //       let filter = medias.filter(media => media.image === imageAlt)
-  //       let positionCible = filter[0];
-  //       let currentPosition = medias.indexOf(positionCible);
-  //       console.log(currentPosition);
-  
-  //       let lightbox = new Lightbox(medias, currentPosition);
-  //       lightbox.nextImageTest(currentPosition);
-  //     }
-  //     // Recuperation de la position de la video en cours
-  //     else if (imageAlt === "") {
-  //       console.log('Recuperation position video OK');
-  
-  //       const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-  //       // console.log(lightboxVideoEnCours);
-  //       const videoAlt = lightboxVideoEnCours.alt;
-  //       // console.log(videoAlt);
-  //       let filterVideo = medias.filter(media => media.video === videoAlt);
-  //       // console.log(filterVideo);
-  //       let positionCible = filterVideo[0];
-  //       // console.log(positionCible);
-  //       let currentPosition = medias.indexOf(positionCible);
-  //       console.log(currentPosition);
-  
-  //       // Construction de l'element suivant
-  //       let lightbox = new Lightbox(medias, currentPosition);
-  //       lightbox.nextImageTest(currentPosition);
-  //     }
-  
-  //     // Construction de l'element suivant
-  //     // let lightbox = new Lightbox(medias, currentPosition);
-  //     // lightbox.nextImageTest(currentPosition);
-  
-  //   })
-  
-  //   // Event sur fleche de gauche
-  //   const lightboxArrowLeft = document.querySelector('.fa-chevron-left')
-  //   // const lightboxArrowLeft = document.querySelector('#lightbox-test-arrowLeft')
-  //   lightboxArrowLeft.addEventListener("click", () => {
-  
-  //     // Recuperation de la position de l'image en cours
-  //     const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //     const imageAlt = lightboxImgEnCours.alt;
-  //     // let filter = medias.filter(media => media.image === imageAlt)
-  //     // let positionCible = filter[0];
-  //     // let currentPosition = medias.indexOf(positionCible);
-  //     // console.log(currentPosition);
-  
-  //     // Recuperation de la position de la image en cours
-  //     if (imageAlt) {
-  //       console.log('Recuperation position image OK');
-  
-  //       const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //       const imageAlt = lightboxImgEnCours.alt;
-  //       let filter = medias.filter(media => media.image === imageAlt)
-  //       let positionCible = filter[0];
-  //       let currentPosition = medias.indexOf(positionCible);
-  //       console.log(currentPosition);
-  
-  //       let lightbox = new Lightbox(medias, currentPosition);
-  //       lightbox.beforeImageTest(currentPosition);
-  //     }
-  //     // Recuperation de la position de la video en cours
-  //     else if (imageAlt === "") {
-  //       console.log('Recuperation position video OK');
-  
-  //       const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-  //       // console.log(lightboxVideoEnCours);
-  //       const videoAlt = lightboxVideoEnCours.alt;
-  //       // console.log(videoAlt);
-  //       let filterVideo = medias.filter(media => media.video === videoAlt);
-  //       // console.log(filterVideo);
-  //       let positionCible = filterVideo[0];
-  //       // console.log(positionCible);
-  //       let currentPosition = medias.indexOf(positionCible);
-  //       console.log(currentPosition);
-  
-  //       // Construction de l'element suivant
-  //       let lightbox = new Lightbox(medias, currentPosition);
-  //       lightbox.beforeImageTest(currentPosition);
-  //     }
-  
-  //     // Construction de l'element suivant
-  //     // let lightbox = new Lightbox(medias, currentPosition);
-  //     // lightbox.nextImageTest(currentPosition);
-  
-  //   })
-  
-  //   // Event fermeture
-  //   const lightboxClose = document.querySelector('#zoneClose');
-  //   lightboxClose.addEventListener('click', () => {
-  //     const lightboxTest = document.querySelector('#lightbox-test');
-  //     lightboxTest.style.display = 'none';
-  //     lightboxTest.setAttribute('aria-hidden', 'true');
-  
-  //   })
-  
-  //   // Event touche clavier
-  //   document.addEventListener("keydown", function(event) {
-  
-  //     const lightboxAriaHidden = sectionLightbox.getAttribute('aria-hidden');
-  //     console.log(lightboxAriaHidden);
-  
-  //     if (lightboxAriaHidden != "true") {
-  //       console.log('toutéfalseee');
-  //       // Touche Droite
-  //       if (event.keyCode === 39) {
-  //         // La flèche de droite a été pressée
-  //         // console.log("Flèche de droite pressée !");
-  
-  
-  //         // Recuperation de la position de l'image en cours
-  //         const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //         const imageAlt = lightboxImgEnCours.alt;
-  //         // let filter = medias.filter(media => media.image === imageAlt)
-  //         // let positionCible = filter[0];
-  //         // let currentPosition = medias.indexOf(positionCible);
-  //         // console.log(currentPosition);
-  
-  //         // Recuperation de la position de la image en cours
-  //         if (imageAlt) {
-  //           // console.log('Recuperation position image OK');
-  
-  //           const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //           const imageAlt = lightboxImgEnCours.alt;
-  //           let filter = medias.filter(media => media.image === imageAlt)
-  //           let positionCible = filter[0];
-  //           let currentPosition = medias.indexOf(positionCible);
-  //           // console.log(currentPosition);
-  
-  //           let lightbox = new Lightbox(medias, currentPosition);
-  //           lightbox.nextImageTest(currentPosition);
-  //         }
-  //         // Recuperation de la position de la video en cours
-  //         else if (imageAlt === "") {
-  //           console.log('Recuperation position video OK');
-  
-  //           const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-  //           // console.log(lightboxVideoEnCours);
-  //           const videoAlt = lightboxVideoEnCours.alt;
-  //           // console.log(videoAlt);
-  //           let filterVideo = medias.filter(media => media.video === videoAlt);
-  //           // console.log(filterVideo);
-  //           let positionCible = filterVideo[0];
-  //           // console.log(positionCible);
-  //           let currentPosition = medias.indexOf(positionCible);
-  //           console.log(currentPosition);
-  
-  //           // Construction de l'element suivant
-  //           let lightbox = new Lightbox(medias, currentPosition);
-  //           lightbox.nextImageTest(currentPosition);
-  //         }
-  
-  //         // Construction de l'element suivant
-  //         // let lightbox = new Lightbox(medias, currentPosition);
-  //         // lightbox.nextImageTest(currentPosition);
-  
-  
-  //       }
-  //       // Touche Gauche
-  //       if (event.keyCode === 37) {
-  //         // La flèche de gauche a été pressée
-  //         console.log("Flèche de gauche pressée !");
-  
-  
-  //         // Recuperation de la position de l'image en cours
-  //         const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //         const imageAlt = lightboxImgEnCours.alt;
-  //         // let filter = medias.filter(media => media.image === imageAlt)
-  //         // let positionCible = filter[0];
-  //         // let currentPosition = medias.indexOf(positionCible);
-  //         // console.log(currentPosition);
-  
-  //         // Recuperation de la position de la image en cours
-  //         if (imageAlt) {
-  //           console.log('Recuperation position image OK');
-  
-  //           const lightboxImgEnCours = document.querySelector('#lightboxImg');
-  //           const imageAlt = lightboxImgEnCours.alt;
-  //           let filter = medias.filter(media => media.image === imageAlt)
-  //           let positionCible = filter[0];
-  //           let currentPosition = medias.indexOf(positionCible);
-  //           console.log(currentPosition);
-  
-  //           let lightbox = new Lightbox(medias, currentPosition);
-  //           lightbox.beforeImageTest(currentPosition);
-  //         }
-  //         // Recuperation de la position de la video en cours
-  //         else if (imageAlt === "") {
-  //           console.log('Recuperation position video OK');
-  
-  //           const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
-  //           // console.log(lightboxVideoEnCours);
-  //           const videoAlt = lightboxVideoEnCours.alt;
-  //           // console.log(videoAlt);
-  //           let filterVideo = medias.filter(media => media.video === videoAlt);
-  //           // console.log(filterVideo);
-  //           let positionCible = filterVideo[0];
-  //           // console.log(positionCible);
-  //           let currentPosition = medias.indexOf(positionCible);
-  //           console.log(currentPosition);
-  
-  //           // Construction de l'element suivant
-  //           let lightbox = new Lightbox(medias, currentPosition);
-  //           lightbox.beforeImageTest(currentPosition);
-  //         }
-  
-  //         // Construction de l'element suivant
-  //         // let lightbox = new Lightbox(medias, currentPosition);
-  //         // lightbox.nextImageTest(currentPosition);
-  
-  
-  //       }
-  //       // Touche Echap
-  //       if (event.keyCode === 27 || event.keyCode === 32) {
-  //         // La touche "Échap" a été pressée
-  //         console.log("Touche Échap pressée !");
-  //         const lightboxTest = document.querySelector('#lightbox-test');
-  //         lightboxTest.style.display = 'none';
-  //       }
-  //     } 
-  //   });
-  
-  // })
   
 }
 

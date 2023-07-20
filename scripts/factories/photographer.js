@@ -23,9 +23,7 @@ function photographerFactory(data) {
         link.setAttribute("href", photographer);
         link.setAttribute("class", "focus");
         // Création d'un lien entre index.html et la page "photographes"
-        link.addEventListener("click", () => {
-            console.log(data);
-        })
+        
 
         // Container image
 

@@ -84,7 +84,6 @@ function mediaFactory(data) {
         zoneNbLikes.setAttribute('class', 'zoneNbLikes');
         nombreLikes.textContent = likePhoto;
         
-        // console.log(likePhoto);
         
         article.appendChild(zoneIconLikes);
         zoneIconLikes.appendChild(titreImage);

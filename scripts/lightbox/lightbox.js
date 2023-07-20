@@ -13,7 +13,6 @@ class Lightbox {
   
   currentIndex(index) {
     let currentIndex = index;
-    console.log(currentIndex);
     return currentIndex;
     
   }
@@ -21,7 +20,6 @@ class Lightbox {
   showTest(index) {
     let currentPosition = index;
     let medias = this.listElement;
-    // console.log(medias[currentPosition]);
     
     // APPARITION DE LA LIGHTBOX
     // ________________________
@@ -48,7 +46,6 @@ class Lightbox {
       
     } 
     else if (elementVideo in tableau) {
-      console.log("Video est presente");
       
       const lightboxVideoEnCours = document.querySelector('#lightboxVideo');
       lightboxVideoEnCours.style.display = "block";
@@ -78,7 +75,6 @@ class Lightbox {
 
     if (newPosition >= mediasLength) {
       this.showTest(0);
-      // console.log('trop long');
     } else {
       this.showTest(newPosition)
     }
@@ -86,7 +82,6 @@ class Lightbox {
   }
 
   beforeImage(currentPosition) {
-    // console.log('before');
     
     let medias = this.listElement;
     let mediasLength = medias.length;
