@@ -19,6 +19,9 @@ async function displayData(photographers) {
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });
+
+  
+
 }
 
 // Fonction d'initialisation

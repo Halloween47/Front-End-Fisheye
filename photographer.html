@@ -11,17 +11,17 @@
 <body>
   
   <header aria-hidden="false">
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="logo"/></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" aria-label="logo" tabindex="1"/></a>
   </header>
   
   <main id="main" aria-hidden="false">
     <div class="photograph-header">
       <!-- <button class="contact_button" onclick="displayModal()" id="contactMe">Contactez-moi</button> -->
-      <button class="contact_button" id="contactMe" aria-label="Contact Me" >Contactez-moi</button>
+      <button class="contact_button" id="contactMe" aria-label="Contact Me" tabindex="2">Contactez-moi</button>
     </div>
     <div class="photograph-filter">
       <label for="photograph-filter">Trier par</label>
-      <select id="photograph-filter" name="photograph-filter" size=1>
+      <select id="photograph-filter" name="photograph-filter" size=1 tabindex="3">
         <!-- <option>Popularité<option>Date<option>Titre -->
           <option value="popularite" id="popularite">Popularité</option>
           <option value="date">Date</option>

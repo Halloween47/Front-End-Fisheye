@@ -18,12 +18,13 @@ function mediaFactory(data) {
             return videos;
         }
     }    
-    function getMediaCardDOM() {
+    function getMediaCardDOM(index) {
         const article = document.createElement( 'article' );
         article.setAttribute('class', 'articleMedia');
         
         const containerImg = document.createElement('div');
         containerImg.setAttribute('class', 'container-img');
+        containerImg.setAttribute('tabindex', index + 1);
         article.appendChild(containerImg);
         
         const img = document.createElement( 'img' );
@@ -82,6 +83,8 @@ function mediaFactory(data) {
         iconLike.setAttribute('aria-label', 'likes');
         nombreLikes.setAttribute('class', 'nombreLikes');
         zoneNbLikes.setAttribute('class', 'zoneNbLikes');
+        zoneNbLikes.setAttribute('tabindex', index + 2);
+
         nombreLikes.textContent = likePhoto;
         
         

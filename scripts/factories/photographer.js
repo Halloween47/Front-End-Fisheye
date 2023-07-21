@@ -36,6 +36,7 @@ function photographerFactory(data) {
         img.setAttribute("src", picture);
         img.setAttribute("alt", alternate);
         img.setAttribute("aria-label", ariaLabel);
+        img.setAttribute("tabindex", 0);
         
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
